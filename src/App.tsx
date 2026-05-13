@@ -1,9 +1,30 @@
+import { useEffect, useRef, useState } from 'react'
 import './App.css'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Marquee from './components/Marquee'
 
 function App() {
+  const aboutCardRef = useRef<HTMLDivElement | null>(null)
+  const [aboutVisible, setAboutVisible] = useState(false)
+
+  useEffect(() => {
+    const card = aboutCardRef.current
+    if (!card) return
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          setAboutVisible(entry.isIntersecting)
+        })
+      },
+      { threshold: 0.25 }
+    )
+
+    observer.observe(card)
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
@@ -21,7 +42,13 @@ function App() {
           </div>
         
           <div className="relative max-w-7xl mx-auto">
-            <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-brand-800/80 backdrop-blur-md shadow-[0_0_0_1px_rgba(255,255,255,0.04),0_20px_60px_-24px_rgba(0,0,0,0.8)]">
+            <div
+              ref={aboutCardRef}
+              className={
+                'relative overflow-hidden rounded-3xl border border-white/10 bg-brand-800/80 backdrop-blur-md shadow-[0_0_0_1px_rgba(255,255,255,0.04),0_20px_60px_-24px_rgba(0,0,0,0.8)] ' +
+                (aboutVisible ? 'animate-slide-in-left' : 'opacity-0 -translate-x-9')
+              }
+            >
               <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_25%_35%,rgba(255,255,255,0.06),transparent_70%)]" />
               <div className="max-w-5xl mx-auto px-auto md:py-12">
                 <h2 className="text-5xl font-bold mb-8 text-white">About Me</h2>
