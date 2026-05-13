@@ -1,0 +1,8 @@
+@import 'tailwindcss';
+
+html { scroll-behavior: smooth; }
+body { background-color: #2d3d36; color: #fff; font-family: Poppins,system-ui,sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+
+/* Utility helpers (can't use @apply due to linter limitations) */
+.text-gradient { background-image: linear-gradient(to right,#fff,#ffffffe6,#ffffffb3); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.focus-ring:focus-visible { outline: 0; box-shadow: 0 0 0 2px rgba(52,211,153,.7),0 0 0 4px #2d3d36; }
