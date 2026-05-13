@@ -54,7 +54,7 @@ export default function Navbar() {
 
   return (
     <header className="fixed top-0 inset-x-0 z-50">
-      <nav className="backdrop-blur supports-[backdrop-filter]:bg-brand-800/80 bg-brand-800/95 border-b border-white/20">
+      <nav className="backdrop-blur supports-[backdrop-filter]:bg-brand-900/70 bg-brand-900/90 border-b border-white/10">
         <div className="max-w-7xl mx-auto px-6 h-16 grid grid-cols-3 items-center">
           <a href="#home" className="font-semibold tracking-wide text-white text-sm sm:text-base">Ronald Gelicame</a>
             <ul className="hidden md:flex gap-10 text-sm font-medium justify-self-center">

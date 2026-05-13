@@ -36,8 +36,8 @@ export default function Marquee({ items, direction = 'left', className = '', spe
       </div>
 
       {/* subtle gradient edges */}
-      <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-brand-800 via-brand-800/70 to-transparent" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-brand-800 via-brand-800/70 to-transparent" />
+      <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-brand-900 via-brand-900/70 to-transparent" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-brand-900 via-brand-900/70 to-transparent" />
     </div>
   )
 }
