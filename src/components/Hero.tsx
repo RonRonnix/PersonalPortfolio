@@ -1,4 +1,5 @@
 import profileImg from '../assets/images/Profileimage.jpg' 
+import resumePdf from '../assets/images/Resume.pdf' 
 import Marquee from './Marquee'
 
 export default function Hero() {
@@ -27,7 +28,7 @@ export default function Hero() {
               </h1>
               <p className="mt-6 text-lg text-brand-100/85 leading-relaxed max-w-md">based in the Philippines.</p>
               <div className="mt-10 flex gap-5 items-center flex-wrap">
-                <a href="/resume.pdf" className="inline-flex items-center rounded-md border border-emerald-300/60 bg-emerald-400/10 px-7 py-3 text-sm font-semibold text-white hover:bg-emerald-400/20 focus-ring transition-colors">Resume</a>
+                <a href={resumePdf} download className="inline-flex items-center rounded-md border border-emerald-300/60 bg-emerald-400/10 px-7 py-3 text-sm font-semibold text-white hover:bg-emerald-400/20 focus-ring transition-colors">Resume</a>
                 <a href="#works" className="text-sm font-medium text-brand-100/80 hover:text-white focus-ring">View Works →</a>
               </div>
             </div>
