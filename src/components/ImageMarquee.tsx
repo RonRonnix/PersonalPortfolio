@@ -16,7 +16,7 @@ interface ImageMarqueeProps {
 export default function ImageMarquee({ items, direction = 'left', className = '', speedSeconds }: ImageMarqueeProps) {
   const animationClass = direction === 'left' ? 'animate-marquee' : 'animate-marquee-reverse'
   const style: React.CSSProperties | undefined = speedSeconds ? { animationDuration: `${speedSeconds}s` } : undefined
-  const [activeImage, setActiveImage] = useState<ImageMarqueeItem | null>(null)
+  const [activeIndex, setActiveIndex] = useState<number | null>(null)
   const [zoomed, setZoomed] = useState(false)
   const [pan, setPan] = useState({ x: 0, y: 0 })
   const [isDragging, setIsDragging] = useState(false)
@@ -42,19 +42,28 @@ export default function ImageMarquee({ items, direction = 'left', className = ''
   }))
 
   const content = (items.length ? items : fallbackItems)
+  const activeImage = activeIndex !== null ? content[activeIndex] : null
+  const hasMultiple = content.length > 1
   const looped = [...content, ...content]
 
   useEffect(() => {
     if (!activeImage) return
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
-        setActiveImage(null)
+        setActiveIndex(null)
+      }
+      if (!hasMultiple) return
+      if (event.key === 'ArrowRight') {
+        setActiveIndex((prev) => (prev === null ? 0 : (prev + 1) % content.length))
+      }
+      if (event.key === 'ArrowLeft') {
+        setActiveIndex((prev) => (prev === null ? 0 : (prev - 1 + content.length) % content.length))
       }
     }
 
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [activeImage])
+  }, [activeImage, content.length, hasMultiple])
 
   useEffect(() => {
     if (!activeImage) return
@@ -194,6 +203,16 @@ export default function ImageMarquee({ items, direction = 'left', className = ''
     setPan({ ...clamped })
   }
 
+  const handlePrev = (event?: React.MouseEvent<HTMLButtonElement>) => {
+    event?.stopPropagation()
+    setActiveIndex((prev) => (prev === null ? 0 : (prev - 1 + content.length) % content.length))
+  }
+
+  const handleNext = (event?: React.MouseEvent<HTMLButtonElement>) => {
+    event?.stopPropagation()
+    setActiveIndex((prev) => (prev === null ? 0 : (prev + 1) % content.length))
+  }
+
   return (
     <div className={`group relative overflow-hidden select-none ${className}`}>
       <div className={`flex w-max gap-6 pr-6 ${animationClass}`} style={style} aria-hidden="true">
@@ -208,7 +227,7 @@ export default function ImageMarquee({ items, direction = 'left', className = ''
                 alt={item.alt}
                 className="h-full w-full object-cover cursor-pointer"
                 loading="lazy"
-                onClick={() => setActiveImage(item)}
+                onClick={() => setActiveIndex(index % content.length)}
               />
             ) : (
               <div className="flex h-full w-full items-center justify-center text-sm text-brand-100/70">
@@ -227,12 +246,32 @@ export default function ImageMarquee({ items, direction = 'left', className = ''
           className="fixed inset-0 z-[999] flex items-center justify-center bg-black/70 p-6 touch-none"
           role="dialog"
           aria-modal="true"
-          onClick={() => setActiveImage(null)}
+          onClick={() => setActiveIndex(null)}
         >
+          {hasMultiple && (
+            <button
+              type="button"
+              onClick={handlePrev}
+              className="absolute left-6 top-1/2 z-[1000] -translate-y-1/2 rounded-full border border-white/10 bg-brand-900/80 p-3 text-sm text-white shadow-[0_0_0_1px_rgba(255,255,255,0.04)] transition-all duration-200 hover:scale-110 hover:bg-brand-900 hover:shadow-[0_0_20px_rgba(56,189,248,0.35)] active:scale-95 focus-ring cursor-pointer"
+              aria-label="Previous image"
+            >
+              ←
+            </button>
+          )}
+          {hasMultiple && (
+            <button
+              type="button"
+              onClick={handleNext}
+              className="absolute right-6 top-1/2 z-[1000] -translate-y-1/2 rounded-full border border-white/10 bg-brand-900/80 p-3 text-sm text-white shadow-[0_0_0_1px_rgba(255,255,255,0.04)] transition-all duration-200 hover:scale-110 hover:bg-brand-900 hover:shadow-[0_0_20px_rgba(56,189,248,0.35)] active:scale-95 focus-ring cursor-pointer"
+              aria-label="Next image"
+            >
+              →
+            </button>
+          )}
           <div ref={containerRef} className="relative max-h-[90vh] max-w-6xl w-full" onClick={(event) => event.stopPropagation()}>
             <button
               type="button"
-              onClick={() => setActiveImage(null)}
+              onClick={() => setActiveIndex(null)}
               className="absolute -top-12 right-0 text-sm text-brand-100/80 hover:text-white focus-ring"
             >
               Close
