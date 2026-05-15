@@ -7,6 +7,12 @@ import ImageMarquee from './components/ImageMarquee'
 import cyberShot1 from './assets/images/Cyber1.jpg'
 import cyberShot2 from './assets/images/Cyber2.jpg'
 import cyberShot3 from './assets/images/Cyber3.jpg'
+import Whiteboard1 from './assets/images/Whiteboard1.jpg'
+import Whiteboard2 from './assets/images/Whiteboard2.jpg'
+import Whiteboard3 from './assets/images/Whiteboard3.jpg'
+import Notes1 from './assets/images/Notes1.jpg'
+import Notes2 from './assets/images/Notes2.jpg'
+import Notes3 from './assets/images/Notes3.jpg'
 
 const projects = [
   {
@@ -19,16 +25,16 @@ const projects = [
   {
     title: 'Collaborative Whiteboard',
     description: 'Real-time drawing canvas with boards, tools, and sharing.',
-    repoUrl: '',
+    repoUrl: 'https://github.com/RonRonnix/Whiteboard.git',
     highlights: ['React', 'Sockets', 'Canvas'],
-    screenshots: []
+    screenshots: [Whiteboard1, Whiteboard2, Whiteboard3]
   },
   {
     title: 'Notes App',
     description: 'Personal notes with auth, tags, and quick search.',
-    repoUrl: '',
+    repoUrl: 'https://github.com/RonRonnix/noteapp.git',
     highlights: ['React', 'TypeScript', 'REST'],
-    screenshots: []
+    screenshots: [Notes1, Notes2, Notes3]
   }
 ]
 
