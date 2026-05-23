@@ -133,6 +133,12 @@ function App() {
       {/* Encapsulating box for Selected Works */}
         <section id="works" className="py-32 bg-brand-900/80">
           <div className="relative max-w-7xl mx-auto">
+            {/* Background atmosphere */}
+            <div className="pointer-events-none absolute inset-0 opacity-40">
+              <div className="absolute bottom-120 -left-120 w-[40rem] h-[40rem] rounded-full bg-[#14b8a6] blur-[170px]" />
+              <div className="absolute -bottom-60 -right-90 w-[46rem] h-[46rem] rounded-full bg-[#1b97aa] blur-[160px]" />
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[75rem] h-[75rem] rounded-full bg-emerald-400/15 blur-[160px]" />
+            </div>
             <div
               ref={worksref}
               className={
