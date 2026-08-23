@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+/* Component specific additions can live here if needed */
+/* Marquee fallback animation utilities (in case tailwind theme extension not picked up) */
+@keyframes marquee {
+	0% { transform: translateX(0); }
+	100% { transform: translateX(-50%); }
+}
+
+.animate-marquee { animation: marquee 25s linear infinite; }
+.animate-marquee-reverse { animation: marquee 25s linear infinite reverse; }
+
+/* Pause on hover (optional) */
+.group:hover .animate-marquee,
+.group:hover .animate-marquee-reverse { animation-play-state: paused; }
