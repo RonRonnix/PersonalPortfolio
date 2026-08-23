@@ -91,7 +91,7 @@ function App() {
           setWorksVisible(entry.isIntersecting)
         })
       },
-      { threshold: 0.25 }
+      { threshold: 0.06 }
     )
 
     observer.observe(card)
@@ -105,7 +105,7 @@ function App() {
       <Hero />
 
       {/* Encapsulating box for About */}
-        <section id="about" className="relative py-32 bg-brand-900/90 isolate">
+        <section id="about" className="relative py-10 bg-brand-900/90 isolate">
           <div className="pointer-events-none absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-brand-900 to-transparent" />
           {/* Background atmosphere */}
           <div className="pointer-events-none absolute inset-0 opacity-40">
@@ -126,17 +126,27 @@ function App() {
               <div className="max-w-5xl mx-auto px-auto md:py-12">
                 <h2 className="text-5xl font-bold mb-8 text-white">About Me</h2>
                 <div className="mt-6 h-px w-32 mb-4 bg-white/30 rounded-full"></div>
-                <p className="max-w-5xl text-brand-100/80 leading-relaxed">Add a concise professional summary, your core values, and a short story that shows your motivation. You can include a timeline, skills matrix, or a few personal highlights here.</p>
+                <ul className="max-w-5xl text-brand-100/80 leading-relaxed">
+                  <li>&bull; I'm a passionate fullstack developer with a strong focus on creating efficient, working, and user-friendly applications with a background in both frontend and backend development.</li>
+                  <li>&bull; I bring a holistic approach to solving complex problems and delivering high-quality solutions.</li>
+                  <li>&bull; I have created personal projects that showcase my skills in various technologies which includes Laravel, React, TypeScript, Node.js, and more.</li>
+                  <li>&bull; I thrive in collaborative environments, where I can contribute to team projects and learn from others.</li>
+                  <li>&bull; My goal is to continuously improve my skills and stay up-to-date with the latest industry trends,</li>
+                  <li>&bull; ensuring that I can deliver innovative and effective solutions to any challenge I encounter.</li>
+                </ul>
                 <div className="mt-10">
                   <Marquee
                     items={[
                       'Problem Solver',
-                      'Clean Code Advocate',
+                      // 'Clean Code Advocate',
                       'Team Collaborator',
-                      'UI/UX Focused',
+                      'FrontEnd Developer',
+                      'BackEnd Developer',
+                      'Fullstack Developer',
+                      'UI/UX Enthusiast',
                       'Continuous Learner',
                       'Performance Minded',
-                      'Test Writing',
+                      // 'Test Writing',
                       'Documentation',
                     ]}
                     direction="right"
@@ -151,7 +161,7 @@ function App() {
         </section>
         
       {/* Encapsulating box for Selected Works */}
-        <section id="works" className="py-32 bg-brand-900/80">
+        <section id="works" className="py-10 bg-brand-900/80">
           <div className="relative max-w-7xl mx-auto">
             {/* Background atmosphere */}
             <div className="pointer-events-none absolute inset-0 opacity-40">

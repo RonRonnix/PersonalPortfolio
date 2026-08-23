@@ -4,7 +4,7 @@ import Marquee from './Marquee'
 
 export default function Hero() {
   return (
-    <section id="home" className="relative bg-brand-900 pt-40 pb-28 px-4 overflow-visible">
+    <section id="home" className="relative bg-brand-900 pt-40 pb-10 px-4 overflow-visible">
       {/* Background atmosphere */}
       <div className="pointer-events-none absolute inset-10 opacity-40">
         <div className="absolute -top-48 -left-24 w-[40rem] h-[40rem] rounded-full bg-[#2dd4bf] blur-[190px]" />
@@ -21,7 +21,7 @@ export default function Hero() {
             
             {/* Text content */}
             <div className="flex-1 max-w-xl animate-fade-up">
-              <p className="text-emerald-200 font-medium tracking-wide">Hello, I&apos;m Ronald,</p>
+              <p className="text-emerald-200 font-medium tracking-wide">Hello, I&apos;m Ronald Gelicame,</p>
               <h1 className="mt-3 font-extrabold leading-tight tracking-tight text-gradient text-5xl sm:text-6xl">
                 <span className="block">Full stack</span>
                 <span className="block">Developer</span>
