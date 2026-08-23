@@ -17,28 +17,41 @@ import Notes3 from './assets/images/Notes3.jpg'
 const projects = [
   {
     title: "Cyber",
-    description: 'Modern e-commerce storefront with product browsing, cart, and checkout flow.',
+    description: 
+      `E-commerce storefront with product browsing, cart, and checkout flow.
+      Built with React, TypeScript, and Vite for a fast and responsive user experience.
+      Features include product listings, shopping cart, and checkout functionality with a focus on performance and user experience.`,
     repoUrl: 'https://github.com/RonRonnix/E-commerce.git',
     highlights: ['React', 'TypeScript', 'Vite'],
     screenshots: [cyberShot1, cyberShot2, cyberShot3]
   },
   {
     title: "Rhaven's Garage",
-    description: 'Personal notes with auth, tags, and quick search.',
+    description: 
+      `E-commerce platform for a motorcycle repair shop, featuring product listings, cart, and checkout functionality.
+      Laravel backend with REST API, React frontend, and TypeScript for type safety. 
+      Includes user authentication, order management, checkout, and admin functionalities with inventory history tracking
+      products, services, and categories management with image rendering for managing products and orders.`,
     repoUrl: 'https://github.com/RonRonnix/PersonalPortfolio.git',
     highlights: ['React', 'TypeScript', 'REST'],
     screenshots: []
   },
   {
     title: "Collaborative Whiteboard",
-    description: 'Real-time drawing canvas with boards, tools, and sharing.',
+    description: 
+      `Real-time drawing canvas with boards, tools, and sharing.
+      Built with React, TypeScript, and Vite for a fast and responsive user experience.
+      Features include real-time collaboration, drawing tools, sharing capabilities, and real-time messaging.`,
     repoUrl: 'https://github.com/RonRonnix/Whiteboard.git',
     highlights: ['React', 'Sockets', 'Canvas'],
     screenshots: [Whiteboard1, Whiteboard2, Whiteboard3]
   },
   {
     title: "Notes App",
-    description: 'Personal notes with auth, tags, and quick search.',
+    description: 
+      `Personal notes with auth, tags, and quick search.
+      Built with React, TypeScript, and Vite for a fast and responsive user experience.
+      Features include note creation, editing, tagging, and quick search functionality.`,
     repoUrl: 'https://github.com/RonRonnix/noteapp.git',
     highlights: ['React', 'TypeScript', 'REST'],
     screenshots: [Notes1, Notes2, Notes3]
