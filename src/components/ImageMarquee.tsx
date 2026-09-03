@@ -219,7 +219,7 @@ export default function ImageMarquee({ items, direction = 'left', className = ''
         {looped.map((item, index) => (
           <div
             key={`${item.alt}-${index}`}
-            className="h-44 w-72 md:h-48 md:w-80 rounded-2xl border border-white/10 bg-brand-800/70 shadow-[0_12px_30px_-20px_rgba(0,0,0,0.8)] overflow-hidden"
+            className="h-36 w-60 rounded-2xl border border-white/10 bg-brand-800/70 shadow-[0_12px_30px_-20px_rgba(0,0,0,0.8)] overflow-hidden sm:h-44 sm:w-72 md:h-48 md:w-80"
           >
             {item.src ? (
               <img

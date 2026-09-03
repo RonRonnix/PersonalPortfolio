@@ -134,7 +134,7 @@ function App() {
       <Hero />
 
       {/* Encapsulating box for About */}
-        <section id="about" className="relative py-10 bg-brand-900/90 isolate">
+        <section id="about" className="relative isolate bg-brand-900/90 px-4 py-8 sm:py-10">
           <div className="pointer-events-none absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-brand-900 to-transparent" />
           {/* Background atmosphere */}
           <div className="pointer-events-none absolute inset-0 opacity-40">
@@ -152,8 +152,8 @@ function App() {
               }
             >
               <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_25%_35%,rgba(255,255,255,0.06),transparent_70%)]" />
-              <div className="max-w-5xl mx-auto px-auto md:py-12">
-                <h2 className="text-5xl font-bold mb-8 text-white">About Me</h2>
+              <div className="mx-auto max-w-5xl px-5 py-8 sm:px-8 md:py-12">
+                <h2 className="mb-6 text-3xl font-bold text-white sm:mb-8 sm:text-5xl">About Me</h2>
                 <div className="mt-6 h-px w-32 mb-4 bg-white/30 rounded-full"></div>
                 <ul className="max-w-5xl text-brand-100/80 leading-relaxed">
                   <li>&bull; I'm a passionate fullstack developer with a strong focus on creating efficient, working, and user-friendly applications with a background in both frontend and backend development.</li>
@@ -190,7 +190,7 @@ function App() {
         </section>
 
         {/* Encapsulating box for Experiences */}
-        <section id="experience" className="relative py-10 bg-brand-900/90 isolate">
+        <section id="experience" className="relative isolate bg-brand-900/90 px-4 py-8 sm:py-10">
           <div className="pointer-events-none absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-brand-900 to-transparent" />
           {/* Background atmosphere */}
           <div className="pointer-events-none absolute inset-0 opacity-40">
@@ -208,8 +208,8 @@ function App() {
               }
             >
               <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_25%_35%,rgba(255,255,255,0.06),transparent_70%)]" />
-              <div className="max-w-5xl mx-auto px-auto md:py-12">
-                <h2 className="text-5xl font-bold mb-8 text-white">My Experience</h2>
+              <div className="mx-auto max-w-5xl px-5 py-8 sm:px-8 md:py-12">
+                <h2 className="mb-6 text-3xl font-bold text-white sm:mb-8 sm:text-5xl">My Experience</h2>
                 <div className="mt-6 h-px w-32 mb-4 bg-white/30 rounded-full"></div>
                 <ul className="max-w-5xl text-brand-100/80 leading-relaxed">
                   <li>&bull; I was an intern in BlendIToro as a Front-End web developer where I was tased in handling the layout of the webpage and connecting back-end features to the front-end.</li>
@@ -254,7 +254,7 @@ function App() {
         </section>
         
       {/* Encapsulating box for Selected Works */}
-        <section id="works" className="relative overflow-hidden py-10 bg-brand-900/80">
+        <section id="works" className="relative overflow-hidden bg-brand-900/80 px-4 py-8 sm:py-10">
           <div className="relative max-w-7xl mx-auto">
             {/* Background atmosphere */}
             <div className="pointer-events-none absolute inset-0 opacity-40">
@@ -270,9 +270,9 @@ function App() {
               }
             >
               <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_25%_35%,rgba(255,255,255,0.06),transparent_70%)]" />
-              <div className="max-w-6xl mx-auto px-6 md:px-10 py-14 md:py-16">
+              <div className="mx-auto max-w-6xl px-5 py-10 sm:px-8 sm:py-14 md:px-10 md:py-16">
                 <div className="max-w-3xl">
-                  <h2 className="text-5xl font-bold mb-4 text-white">Projects I have done</h2>
+                  <h2 className="mb-4 text-3xl font-bold text-white sm:text-5xl">Projects I have done</h2>
                   <div className="mt-6 h-px w-32 mb-4 bg-white/30 rounded-full"></div>
                   <p className="text-brand-100/80 leading-relaxed">
                     A selection of my personal and collaborative projects, showcasing my skills in front-end and back-end development, 
@@ -284,7 +284,7 @@ function App() {
 
                 <div className="mt-10 space-y-6">
                   {projects.map(project => (
-                    <div key={project.title} className="rounded-2xl border border-white/10 bg-brand-800/60 p-6">
+                    <div key={project.title} className="rounded-2xl border border-white/10 bg-brand-800/60 p-4 sm:p-6">
                       <div className="grid gap-6 lg:grid-cols-[1fr,1.3fr] lg:items-center">
                         <div>
                           <h3 className="text-xl font-semibold text-white">{project.title}</h3>
