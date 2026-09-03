@@ -61,6 +61,13 @@ const projects = [
   }
 ]
 
+const experienceImages = [
+  {
+    title: "BlendIToro Internship",
+    images: []
+  }
+]
+
 function App() {
   const aboutCardRef = useRef<HTMLDivElement | null>(null)
   const [aboutVisible, setAboutVisible] = useState(false)
@@ -96,7 +103,7 @@ function App() {
           setExperienceVisible(entry.isIntersecting)
         })
       },
-      { threshold: 0.85 }
+      { threshold: 0.5 }
     )
 
     observer.observe(card)
@@ -210,6 +217,16 @@ function App() {
                   <li>&bull; React, PHP, Laravel, Postman, REST, SaaS, UI/UX, Flutter, Vercel Deployment</li>
                   <li>&bull; I was assigned in a team of 5 inters with me being the only Front-End guy with another developer handling the mobile platform through Flutter, two developer being Back-end using Larvel and the last one being the PM who handles the project and the client.</li>
                 </ul>
+
+                <ImageMarquee
+                  items={experienceImages[0].images.map((src, index) => ({
+                    src,
+                    alt: `${experienceImages[0].title} images ${index + 1}`
+                  }))}
+                  className="mt-5 py-2 border-y border-white/10"
+                  speedSeconds={50}
+                />
+
                 {/* <div className="mt-10">
                   <Marquee
                     items={[
