@@ -13,6 +13,9 @@ import Whiteboard3 from './assets/images/Whiteboard3.jpg'
 import Notes1 from './assets/images/Notes1.jpg'
 import Notes2 from './assets/images/Notes2.jpg'
 import Notes3 from './assets/images/Notes3.jpg'
+import Rhaven1 from './assets/images/Rhaven1.png'
+import Rhaven2 from './assets/images/Rhaven2.png'
+import Rhaven3 from './assets/images/Rhaven3.png'
 
 const projects = [
   {
@@ -33,8 +36,8 @@ const projects = [
       Includes user authentication, order management, checkout, and admin functionalities with inventory history tracking
       products, services, and categories management with image rendering for managing products and orders.`,
     repoUrl: 'https://github.com/RonRonnix/PersonalPortfolio.git',
-    highlights: ['React', 'TypeScript', 'REST'],
-    screenshots: []
+    highlights: ['Laravel', 'React', 'PHP', 'MySQL', 'REST'],
+    screenshots: [Rhaven1, Rhaven2, Rhaven3]
   },
   {
     title: "Collaborative Whiteboard",
@@ -161,7 +164,7 @@ function App() {
         </section>
         
       {/* Encapsulating box for Selected Works */}
-        <section id="works" className="py-10 bg-brand-900/80">
+        <section id="works" className="relative overflow-hidden py-10 bg-brand-900/80">
           <div className="relative max-w-7xl mx-auto">
             {/* Background atmosphere */}
             <div className="pointer-events-none absolute inset-0 opacity-40">

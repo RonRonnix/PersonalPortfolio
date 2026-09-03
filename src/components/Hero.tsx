@@ -1,5 +1,5 @@
 import profileImg from '../assets/images/Profileimage.jpg' 
-import resumePdf from '../assets/images/Resume.pdf' 
+import resumePdf from '../assets/images/Gelicame_Resume.pdf' 
 import Marquee from './Marquee'
 
 export default function Hero() {
@@ -22,11 +22,12 @@ export default function Hero() {
             {/* Text content */}
             <div className="flex-1 max-w-xl animate-fade-up">
               <p className="text-emerald-200 font-medium tracking-wide">Hello, I&apos;m Ronald Gelicame,</p>
-              <h1 className="mt-3 font-extrabold leading-tight tracking-tight text-gradient text-5xl sm:text-6xl">
+              <p className="mt-3">Aspiring to be a</p>
+              <h1 className="font-extrabold leading-tight tracking-tight text-gradient text-5xl sm:text-6xl">
                 <span className="block">Full stack</span>
                 <span className="block">Developer</span>
               </h1>
-              <p className="mt-6 text-lg text-brand-100/85 leading-relaxed max-w-md">based in the Philippines.</p>
+              <p className="mt-6 text-lg text-brand-100/85 leading-relaxed max-w-md">based in Bohol, Philippines.</p>
               <div className="mt-10 flex gap-5 items-center flex-wrap">
                 <a href={resumePdf} download className="inline-flex items-center rounded-md border border-emerald-300/60 bg-emerald-400/10 px-7 py-3 text-sm font-semibold text-white hover:bg-emerald-400/20 focus-ring transition-colors">Resume</a>
                 <a href="#works" className="text-sm font-medium text-brand-100/80 hover:text-white focus-ring">View Works →</a>
