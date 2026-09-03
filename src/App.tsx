@@ -66,6 +66,8 @@ function App() {
   const [aboutVisible, setAboutVisible] = useState(false)
   const worksref = useRef<HTMLDivElement | null>(null)
   const [worksVisible, setWorksVisible] = useState(false)
+  const experienceCardRef = useRef<HTMLDivElement | null>(null)
+  const [experienceVisible, setExperienceVisible] = useState(false)
 
   useEffect(() => {
     const card = aboutCardRef.current
@@ -78,6 +80,23 @@ function App() {
         })
       },
       { threshold: 0.25 }
+    )
+
+    observer.observe(card)
+    return () => observer.disconnect()
+  }, [])
+
+    useEffect(() => {
+    const card = experienceCardRef.current
+    if (!card) return
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          setExperienceVisible(entry.isIntersecting)
+        })
+      },
+      { threshold: 0.85 }
     )
 
     observer.observe(card)
@@ -157,6 +176,60 @@ function App() {
                     speedSeconds={65}
                   />
                 </div>
+              </div>
+            </div>
+          </div>
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent via-brand-900/70 to-brand-900" />
+        </section>
+
+        {/* Encapsulating box for Experiences */}
+        <section id="experience" className="relative py-10 bg-brand-900/90 isolate">
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-brand-900 to-transparent" />
+          {/* Background atmosphere */}
+          <div className="pointer-events-none absolute inset-0 opacity-40">
+            <div className="absolute -top-60 -left-40 w-[40rem] h-[40rem] rounded-full bg-[#22d3ee] blur-[170px]" />
+            <div className="absolute top-40 -right-60 w-[46rem] h-[46rem] rounded-full bg-[#14b8a6] blur-[160px]" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[75rem] h-[75rem] rounded-full bg-emerald-400/15 blur-[160px]" />
+          </div>
+        
+          <div className="relative max-w-7xl mx-auto">
+            <div
+              ref={experienceCardRef}
+              className={
+                'relative overflow-hidden rounded-3xl border border-white/10 bg-brand-800/80 backdrop-blur-md shadow-[0_0_0_1px_rgba(255,255,255,0.04),0_20px_60px_-24px_rgba(0,0,0,0.8)] ' +
+                (experienceVisible ? 'animate-slide-in-left' : 'opacity-0 -translate-x-9')
+              }
+            >
+              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_25%_35%,rgba(255,255,255,0.06),transparent_70%)]" />
+              <div className="max-w-5xl mx-auto px-auto md:py-12">
+                <h2 className="text-5xl font-bold mb-8 text-white">My Experience</h2>
+                <div className="mt-6 h-px w-32 mb-4 bg-white/30 rounded-full"></div>
+                <ul className="max-w-5xl text-brand-100/80 leading-relaxed">
+                  <li>&bull; I was an intern in BlendIToro as a Front-End web developer where I was tased in handling the layout of the webpage and connecting back-end features to the front-end.</li>
+                  <li>&bull; The things I learned:</li>
+                  <li>&bull; React, PHP, Laravel, Postman, REST, SaaS, UI/UX, Flutter, Vercel Deployment</li>
+                  <li>&bull; I was assigned in a team of 5 inters with me being the only Front-End guy with another developer handling the mobile platform through Flutter, two developer being Back-end using Larvel and the last one being the PM who handles the project and the client.</li>
+                </ul>
+                {/* <div className="mt-10">
+                  <Marquee
+                    items={[
+                      'Problem Solver',
+                      // 'Clean Code Advocate',
+                      'Team Collaborator',
+                      'FrontEnd Developer',
+                      'BackEnd Developer',
+                      'Fullstack Developer',
+                      'UI/UX Enthusiast',
+                      'Continuous Learner',
+                      'Performance Minded',
+                      // 'Test Writing',
+                      'Documentation',
+                    ]}
+                    direction="right"
+                    className="py-4 border-y border-white/10"
+                    speedSeconds={65}
+                  />
+                </div> */}
               </div>
             </div>
           </div>
