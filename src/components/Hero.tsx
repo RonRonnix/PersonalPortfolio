@@ -5,11 +5,6 @@ import Marquee from './Marquee'
 export default function Hero() {
   return (
     <section id="home" className="relative bg-brand-900 px-4 pb-6 pt-24 sm:pb-8 sm:pt-28 overflow-visible">
-      {/* Background atmosphere */}
-      <div className="pointer-events-none absolute inset-0 opacity-20">
-        <div className="absolute -top-48 -left-24 h-[32rem] w-[32rem] rounded-full bg-[#2dd4bf] blur-[190px]" />
-        <div className="absolute bottom-0 -right-24 h-[28rem] w-[28rem] rounded-full bg-[#38bdf8] blur-[140px]" />
-      </div>
 
       {/* Encapsulating box */}
       <div className="relative max-w-7xl mx-auto">

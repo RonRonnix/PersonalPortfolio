@@ -4,6 +4,7 @@ import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Marquee from './components/Marquee'
 import ImageMarquee from './components/ImageMarquee'
+import PixelBlast from './components/PixelBlast'
 import cyberShot1 from './assets/images/Cyber1.jpg'
 import cyberShot2 from './assets/images/Cyber2.jpg'
 import cyberShot3 from './assets/images/Cyber3.jpg'
@@ -103,7 +104,7 @@ function App() {
           setExperienceVisible(entry.isIntersecting)
         })
       },
-      { threshold: 0.5 }
+      { threshold: 0.25 }
     )
 
     observer.observe(card)
@@ -128,21 +129,23 @@ function App() {
   }, [])
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="relative min-h-screen flex flex-col overflow-hidden">
+      <PixelBlast
+        className="pointer-events-none fixed z-0 opacity-60"
+        color="#94a3b8"
+        pixelSize={3}
+        patternScale={5}
+        patternDensity={0.6}
+        speed={5}
+        edgeFade={0.35}
+      />
       <Navbar />
-      <main className="flex-1">
+      <main className="relative z-10 flex-1">
       <Hero />
 
       {/* Encapsulating box for About */}
         <section id="about" className="relative isolate bg-brand-900/90 px-4 py-5 sm:py-6">
           <div className="pointer-events-none absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-brand-900 to-transparent" />
-          {/* Background atmosphere */}
-          <div className="pointer-events-none absolute inset-0 opacity-40">
-            <div className="absolute -top-60 -left-40 w-[40rem] h-[40rem] rounded-full bg-[#22d3ee] blur-[170px]" />
-            <div className="absolute top-40 -right-60 w-[46rem] h-[46rem] rounded-full bg-[#14b8a6] blur-[160px]" />
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[75rem] h-[75rem] rounded-full bg-emerald-400/15 blur-[160px]" />
-          </div>
-        
           <div className="relative max-w-7xl mx-auto">
             <div
               ref={aboutCardRef}
@@ -192,13 +195,6 @@ function App() {
         {/* Encapsulating box for Experiences */}
         <section id="experience" className="relative isolate bg-brand-900/90 px-4 py-5 sm:py-6">
           <div className="pointer-events-none absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-brand-900 to-transparent" />
-          {/* Background atmosphere */}
-          <div className="pointer-events-none absolute inset-0 opacity-40">
-            <div className="absolute -top-60 -left-40 w-[40rem] h-[40rem] rounded-full bg-[#22d3ee] blur-[170px]" />
-            <div className="absolute top-40 -right-60 w-[46rem] h-[46rem] rounded-full bg-[#14b8a6] blur-[160px]" />
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[75rem] h-[75rem] rounded-full bg-emerald-400/15 blur-[160px]" />
-          </div>
-        
           <div className="relative max-w-7xl mx-auto">
             <div
               ref={experienceCardRef}
@@ -214,8 +210,8 @@ function App() {
                 <ul className="max-w-5xl text-brand-100/80 leading-relaxed">
                   <li>&bull; I was an intern in BlendIToro as a Front-End web developer where I was tased in handling the layout of the webpage and connecting back-end features to the front-end.</li>
                   <li>&bull; The things I learned:</li>
-                  <li>&bull; React, PHP, Laravel, Postman, REST, SaaS, UI/UX, Flutter, Vercel Deployment</li>
-                  <li>&bull; I was assigned in a team of 5 inters with me being the only Front-End guy with another developer handling the mobile platform through Flutter, two developer being Back-end using Larvel and the last one being the PM who handles the project and the client.</li>
+                  &ndash; React, PHP, Laravel, Postman, REST, SaaS, UI/UX, Flutter, Vercel Deployment
+                  <li>&bull; I was assigned in a team of 5 interns with me being the only Front-End guy with another developer handling the mobile platform through Flutter, two developer being Back-end using Larvel and the last one being the PM who handles the project and the client.</li>
                 </ul>
 
                 <ImageMarquee
@@ -223,7 +219,7 @@ function App() {
                     src,
                     alt: `${experienceImages[0].title} images ${index + 1}`
                   }))}
-                  className="mt-5 py-2 border-y border-white/10"
+                  className="mt-5 py-5 border-y border-white/10"
                   speedSeconds={50}
                 />
 
@@ -256,12 +252,6 @@ function App() {
       {/* Encapsulating box for Selected Works */}
         <section id="works" className="relative overflow-hidden bg-brand-900/80 px-4 py-5 sm:py-6">
           <div className="relative max-w-7xl mx-auto">
-            {/* Background atmosphere */}
-            <div className="pointer-events-none absolute inset-0 opacity-40">
-              <div className="absolute bottom-120 -left-120 w-[40rem] h-[40rem] rounded-full bg-[#14b8a6] blur-[170px]" />
-              <div className="absolute -bottom-60 -right-90 w-[46rem] h-[46rem] rounded-full bg-[#1b97aa] blur-[160px]" />
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[75rem] h-[75rem] rounded-full bg-emerald-400/15 blur-[160px]" />
-            </div>
             <div
               ref={worksref}
               className={
@@ -314,7 +304,7 @@ function App() {
                             src,
                             alt: `${project.title} screenshot ${index + 1}`
                           }))}
-                          className="py-2 border-y border-white/10"
+                          className="py-5 border-y border-white/10"
                           speedSeconds={50}
                         />
                       </div>
