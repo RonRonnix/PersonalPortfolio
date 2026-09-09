@@ -44,17 +44,18 @@ export default function Navbar() {
     if (sections.length === 0) return
 
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          setActive(entry.target.id)
-        }
-      })
+      const visibleSection = entries
+        .filter(entry => entry.isIntersecting)
+        .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0]
+
+      if (visibleSection) {
+        setActive(visibleSection.target.id)
+      }
     }, {
-      // When the middle portion of a section is within viewport
       root: null,
-      threshold: 0.45,
-      // Push trigger lines inward so switching feels natural
-      rootMargin: '-10% 0px -40% 0px'
+      threshold: 0,
+      // Use a narrow band below the fixed header as the active section marker.
+      rootMargin: '-18% 0px -72% 0px'
     })
 
     sections.forEach(sec => observer.observe(sec))
