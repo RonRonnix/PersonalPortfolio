@@ -4,39 +4,39 @@ import Marquee from './Marquee'
 
 export default function Hero() {
   return (
-    <section id="home" className="relative bg-brand-900 px-4 pb-8 pt-28 sm:pt-36 sm:pb-10 overflow-visible">
+    <section id="home" className="relative bg-brand-900 px-4 pb-6 pt-24 sm:pb-8 sm:pt-28 overflow-visible">
       {/* Background atmosphere */}
-      <div className="pointer-events-none absolute inset-10 opacity-40">
-        <div className="absolute -top-48 -left-24 w-[40rem] h-[40rem] rounded-full bg-[#2dd4bf] blur-[190px]" />
-        <div className="absolute bottom-0 -right-24 w-[36rem] h-[36rem] rounded-full bg-[#38bdf8] blur-[140px]" />
+      <div className="pointer-events-none absolute inset-0 opacity-20">
+        <div className="absolute -top-48 -left-24 h-[32rem] w-[32rem] rounded-full bg-[#2dd4bf] blur-[190px]" />
+        <div className="absolute bottom-0 -right-24 h-[28rem] w-[28rem] rounded-full bg-[#38bdf8] blur-[140px]" />
       </div>
 
       {/* Encapsulating box */}
       <div className="relative max-w-7xl mx-auto">
-        <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-brand-800/80 backdrop-blur-md shadow-[0_0_0_1px_rgba(255,255,255,0.04),0_20px_60px_-24px_rgba(0,0,0,0.8)]">
+        <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-brand-800/80 backdrop-blur-md shadow-[0_18px_50px_-28px_rgba(0,0,0,0.8)]">
           
           {/* gradient overlay */}
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_25%_35%,rgba(255,255,255,0.08),transparent_70%)]" />
-          <div className="relative flex flex-col items-center gap-10 px-5 py-10 sm:px-8 sm:py-14 md:flex-row md:gap-20 md:px-10 md:py-20">
+          <div className="relative flex flex-col items-center gap-8 px-5 py-8 sm:px-8 sm:py-10 md:flex-row md:gap-12 md:px-10 md:py-12">
             
             {/* Text content */}
             <div className="flex-1 max-w-xl animate-fade-up">
               <p className="text-emerald-200 font-medium tracking-wide">Hello, I&apos;m Ronald Gelicame,</p>
-              <p className="mt-3">Aspiring to be a</p>
-              <h1 className="text-gradient text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl md:text-6xl">
+              <p className="mt-2 text-sm text-brand-100/75">Full-stack developer</p>
+              <h1 className="text-gradient mt-1 text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl md:text-5xl">
                 <span className="block">Full stack</span>
                 <span className="block">Developer</span>
               </h1>
-              <p className="mt-6 text-lg text-brand-100/85 leading-relaxed max-w-md">based in Bohol, Philippines.</p>
-              <div className="mt-8 flex flex-wrap items-center gap-4 sm:mt-10 sm:gap-5">
-                <a href={resumePdf} download className="inline-flex items-center rounded-md border border-emerald-300/60 bg-emerald-400/10 px-7 py-3 text-sm font-semibold text-white hover:bg-emerald-400/20 focus-ring transition-colors">Resume</a>
+              <p className="mt-4 max-w-md text-base leading-relaxed text-brand-100/85">Based in Bohol, Philippines. I build practical, user-friendly web applications from front end to back end.</p>
+              <div className="mt-6 flex flex-wrap items-center gap-4 sm:gap-5">
+                <a href={resumePdf} download className="inline-flex items-center rounded-md border border-emerald-300/60 bg-emerald-400/10 px-5 py-2.5 text-sm font-semibold text-white hover:bg-emerald-400/20 focus-ring transition-colors">Download resume</a>
                 <a href="#works" className="text-sm font-medium text-brand-100/80 hover:text-white focus-ring">View Works →</a>
               </div>
             </div>
 
             {/* Image circle */}
             <div className="flex-1 flex justify-center animate-fade-up">
-              <div className="group relative h-56 w-56 sm:h-64 sm:w-64 md:h-80 md:w-80">
+              <div className="group relative h-40 w-40 sm:h-48 sm:w-48 md:h-56 md:w-56">
                 <div className="absolute inset-0 rounded-full border border-white/20" />
                 <div className="absolute inset-4 rounded-full border border-white/15" />
                 <div className="absolute inset-4 rounded-full overflow-hidden shadow-xl ring-1 ring-black/30 bg-brand-700/20 backdrop-blur-sm">
@@ -54,7 +54,7 @@ export default function Hero() {
         </div>
       </div>
       {/* Tech stack marquee */}
-      <div className="mt-12 max-w-7xl mx-auto px-4">
+      <div className="mt-7 max-w-7xl mx-auto px-4">
         <Marquee
           items={[
             'TypeScript',

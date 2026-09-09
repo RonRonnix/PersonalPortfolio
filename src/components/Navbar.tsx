@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 const links = [
   { href: '#home', label: 'Home' },
   { href: '#about', label: 'About' },
+  { href: '#experience', label: 'Experience' },
   { href: '#works', label: 'Works' }
 ]
 
@@ -63,9 +64,9 @@ export default function Navbar() {
   return (
     <header className="fixed top-0 inset-x-0 z-50">
       <nav className="backdrop-blur supports-[backdrop-filter]:bg-brand-900/70 bg-brand-900/90 border-b border-white/10">
-        <div className="max-w-7xl mx-auto px-6 h-16 grid grid-cols-3 items-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 h-14 grid grid-cols-2 md:grid-cols-3 items-center">
           <a href="#home" className="font-semibold tracking-wide text-white text-sm sm:text-base">Ronald Gelicame</a>
-            <ul className="hidden md:flex gap-10 text-sm font-medium justify-self-center">
+            <ul className="hidden md:flex gap-6 text-sm font-medium justify-self-center">
               {links.map(l => {
                 const id = l.href.substring(1)
                 const isActive = active === id
