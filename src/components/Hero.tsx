@@ -1,4 +1,4 @@
-import profileImg from '../assets/images/Profileimage.jpg' 
+import profileImg from '../assets/images/Profileimage.webp' 
 import resumePdf from '../assets/images/Gelicame_Resume.pdf' 
 import Marquee from './Marquee'
 

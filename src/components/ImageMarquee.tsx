@@ -219,14 +219,15 @@ export default function ImageMarquee({ items, direction = 'left', className = ''
         {looped.map((item, index) => (
           <div
             key={`${item.alt}-${index}`}
-            className="h-36 w-60 rounded-2xl border border-white/10 bg-brand-800/70 shadow-[0_12px_30px_-20px_rgba(0,0,0,0.8)] overflow-hidden sm:h-44 sm:w-72 md:h-48 md:w-80"
+            className="flex h-36 w-60 items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-brand-800/70 shadow-[0_12px_30px_-20px_rgba(0,0,0,0.8)] sm:h-44 sm:w-72 md:h-48 md:w-80"
           >
             {item.src ? (
               <img
                 src={item.src}
                 alt={item.alt}
-                className="h-full w-full object-cover cursor-pointer"
+                className="h-full w-full cursor-pointer object-contain bg-brand-900/40"
                 loading="lazy"
+                decoding="async"
                 onClick={() => setActiveIndex(index % content.length)}
               />
             ) : (
@@ -268,14 +269,7 @@ export default function ImageMarquee({ items, direction = 'left', className = ''
               →
             </button>
           )}
-          <div ref={containerRef} className="relative max-h-[90vh] max-w-6xl w-full" onClick={(event) => event.stopPropagation()}>
-            <button
-              type="button"
-              onClick={() => setActiveIndex(null)}
-              className="absolute -top-12 right-0 text-sm text-brand-100/80 hover:text-white focus-ring"
-            >
-              Close
-            </button>
+          <div ref={containerRef} className="relative flex w-full max-w-6xl items-center justify-center" onClick={(event) => event.stopPropagation()}>
             <img
               ref={imageRef}
               src={activeImage.src}
