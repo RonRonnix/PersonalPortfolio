@@ -214,7 +214,7 @@ export default function ImageMarquee({ items, direction = 'left', className = ''
   }
 
   return (
-    <div className={`group relative overflow-hidden select-none ${className}`}>
+    <div className={`group relative w-full min-w-0 overflow-hidden select-none ${className}`}>
       <div className={`flex w-max gap-6 pr-6 ${animationClass}`} style={style}>
         {looped.map((item, index) => (
           <div
@@ -222,30 +222,23 @@ export default function ImageMarquee({ items, direction = 'left', className = ''
             className="flex h-36 w-60 items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-brand-800/70 shadow-[0_12px_30px_-20px_rgba(0,0,0,0.8)] sm:h-44 sm:w-72 md:h-48 md:w-80"
           >
             {item.src ? (
-              index < content.length ? (
+              (
                 <button
                   type="button"
-                  className="h-full w-full cursor-pointer focus-ring"
+                  className="h-full w-full cursor-pointer border-0 bg-transparent p-0 focus-ring"
                   aria-label={`Open ${item.alt} in image viewer`}
-                  onClick={() => setActiveIndex(index)}
+                  aria-hidden={index >= content.length}
+                  tabIndex={index >= content.length ? -1 : undefined}
+                  onClick={() => setActiveIndex(index % content.length)}
                 >
                   <img
                     src={item.src}
-                    alt={item.alt}
+                    alt={index < content.length ? item.alt : ''}
                     className="h-full w-full object-contain bg-brand-900/40"
                     loading="lazy"
                     decoding="async"
                   />
                 </button>
-              ) : (
-                <img
-                  src={item.src}
-                  alt=""
-                  aria-hidden="true"
-                  className="h-full w-full object-contain bg-brand-900/40"
-                  loading="lazy"
-                  decoding="async"
-                />
               )
             ) : (
               <div className="flex h-full w-full items-center justify-center text-sm text-brand-100/70">

@@ -44,23 +44,22 @@ export default function Navbar() {
 
     if (sections.length === 0) return
 
-    const observer = new IntersectionObserver((entries) => {
-      const visibleSection = entries
-        .filter(entry => entry.isIntersecting)
-        .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0]
+    const updateActiveSection = () => {
+      // A marker in the lower half also reaches the shorter final Contact section.
+      const marker = window.innerHeight * 0.7
+      const currentSection = sections.reduce((current, section) => (
+        section.getBoundingClientRect().top <= marker ? section : current
+      ), sections[0])
+      setActive(currentSection.id)
+    }
 
-      if (visibleSection) {
-        setActive(visibleSection.target.id)
-      }
-    }, {
-      root: null,
-      threshold: 0,
-      // Use a narrow band below the fixed header as the active section marker.
-      rootMargin: '-18% 0px -72% 0px'
-    })
-
-    sections.forEach(sec => observer.observe(sec))
-    return () => observer.disconnect()
+    updateActiveSection()
+    window.addEventListener('scroll', updateActiveSection, { passive: true })
+    window.addEventListener('resize', updateActiveSection)
+    return () => {
+      window.removeEventListener('scroll', updateActiveSection)
+      window.removeEventListener('resize', updateActiveSection)
+    }
   }, [])
 
   return (
@@ -76,6 +75,7 @@ export default function Navbar() {
                   <li key={l.href}>
                     <a
                       href={l.href}
+                      onClick={() => setActive(id)}
                       className={
                         `relative transition-colors after:absolute after:left-0 after:right-0 after:-bottom-2 after:h-[2px] after:rounded-full after:scale-x-0 after:origin-left after:transition-transform after:duration-300 ` +
                         (isActive
@@ -126,7 +126,10 @@ export default function Navbar() {
                   <a
                     key={l.href}
                     href={l.href}
-                    onClick={() => setOpen(false)}
+                    onClick={() => {
+                      setActive(id)
+                      setOpen(false)
+                    }}
                     className={`block font-medium transition-colors ${isActive ? 'text-white' : 'text-brand-50/80 hover:text-white'}`}
                   >
                     {l.label}

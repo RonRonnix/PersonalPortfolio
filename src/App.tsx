@@ -41,11 +41,9 @@ function DecorativePixelBlast() {
       connection?: { saveData?: boolean; effectiveType?: string }
     }
     const connection = navigatorWithConnection.connection
-    const deviceNavigator = navigator as Navigator & { deviceMemory?: number }
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     const slowConnection = connection?.saveData || connection?.effectiveType === 'slow-2g' || connection?.effectiveType === '2g'
-    const slowDevice = navigator.hardwareConcurrency <= 4 || (deviceNavigator.deviceMemory !== undefined && deviceNavigator.deviceMemory <= 4)
-    if (reduceMotion || slowConnection || slowDevice) return
+    if (reduceMotion || slowConnection) return
 
     const loadEffect = () => setShowEffect(true)
     const idleCallback = window.requestIdleCallback?.(loadEffect, { timeout: 2000 })
@@ -160,6 +158,16 @@ function App() {
   const [worksVisible, setWorksVisible] = useState(false)
   const experienceCardRef = useRef<HTMLDivElement | null>(null)
   const [experienceVisible, setExperienceVisible] = useState(false)
+  const [emailCopied, setEmailCopied] = useState(false)
+
+  const handleCopyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(email)
+      setEmailCopied(true)
+    } catch {
+      setEmailCopied(false)
+    }
+  }
 
   useEffect(() => {
     const card = aboutCardRef.current
@@ -241,7 +249,7 @@ function App() {
                   <li>&bull; I thrive in collaborative environments, where I can contribute to team projects and learn from others.</li>
                   <li>&bull; My goal is to continuously improve my skills and stay up-to-date with the latest industry trends, ensuring that I can deliver innovative and effective solutions to any challenge I encounter.</li>
                 </ul>
-                <LazyMount className="mt-6">
+                <LazyMount className="mt-6 min-h-14">
                   <Marquee
                     items={[
                       'Problem Solver',
@@ -289,13 +297,13 @@ function App() {
                   <li>&bull; I was assigned in a team of 5 interns with me being the only Front-End guy with another developer handling the mobile platform through Flutter, two developer being Back-end using Larvel and the last one being the PM who handles the project and the client.</li>
                 </ul>
 
-                <LazyMount className="mt-5 py-5 border-y border-white/10">
+                <LazyMount className="mt-5 min-h-[11.625rem] border-y border-white/10 py-5 sm:min-h-[13.5rem] md:min-h-[14.5rem]">
                   <ImageMarquee
                     items={experienceImages[0].images.map((src, index) => ({
                       src,
                       alt: `${experienceImages[0].title} images ${index + 1}`
                     }))}
-                    speedSeconds={50}
+                    speedSeconds={110}
                   />
                 </LazyMount>
               </div>
@@ -354,7 +362,7 @@ function App() {
                             <div className="mt-5 text-sm text-brand-100/60">Add repo link</div>
                           )}
                         </div>
-                        <LazyMount className="py-5 border-y border-white/10">
+                        <LazyMount className="min-h-[11.625rem] min-w-0 border-y border-white/10 py-5 sm:min-h-[13.5rem] md:min-h-[14.5rem]">
                           <ImageMarquee
                             items={project.screenshots.map((src, index) => ({
                               src,
@@ -379,9 +387,15 @@ function App() {
             <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-brand-100/85">
               I&apos;m happy to discuss web-development opportunities, collaborations, and new ideas.
             </p>
-            <a href={`mailto:${email}`} className="mt-6 inline-flex rounded-md border border-emerald-300/60 bg-emerald-400/10 px-5 py-3 text-base font-semibold text-white transition-colors hover:bg-emerald-400/20 focus-ring">
-              Email me at {email}
-            </a>
+            <div className="mt-6 flex flex-wrap justify-center gap-3">
+              <button type="button" onClick={handleCopyEmail} className="inline-flex rounded-md border border-emerald-300/60 bg-emerald-400/10 px-5 py-3 text-base font-semibold text-white transition-colors hover:bg-emerald-400/20 focus-ring">
+                {emailCopied ? 'Email copied' : 'Copy email address'}
+              </button>
+              <a href={`mailto:${email}`} className="inline-flex rounded-md border border-white/15 px-5 py-3 text-base font-semibold text-brand-100/90 transition-colors hover:border-emerald-300/60 hover:text-white focus-ring">
+                Open email app
+              </a>
+            </div>
+            <p className="mt-3 text-sm text-brand-100/75">{email}</p>
             <div className="mt-6 flex flex-wrap justify-center gap-x-6 gap-y-3 text-base font-medium">
               {socialLinks.map(({ label, href }) => (
                 <a key={label} href={href} target="_blank" rel="noreferrer" className="text-brand-100/85 underline decoration-emerald-300/60 underline-offset-4 transition-colors hover:text-white focus-ring">
