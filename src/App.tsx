@@ -17,8 +17,27 @@ import Notes3 from './assets/images/Notes3.jpg'
 import Rhaven1 from './assets/images/Rhaven1.png'
 import Rhaven2 from './assets/images/Rhaven2.png'
 import Rhaven3 from './assets/images/Rhaven3.png'
+import blendit1 from './assets/images/blendit1.jpg'
+import blendit2 from './assets/images/blendit2.jpg'
+import blendit3 from './assets/images/blendit3.jpg'
+import blendit4 from './assets/images/blendit4.jpg'
+import blendit5 from './assets/images/blendit5.jpg'
+import blendit6 from './assets/images/blendit6.jpg'
+import blendit7 from './assets/images/blendit7.jpg'
+import blendit8 from './assets/images/blendit8.jpg'
 
 const projects = [
+  {
+    title: "Rhaven's Garage",
+    description: 
+      `E-commerce platform for a motorcycle repair shop, featuring product listings, cart, and checkout functionality.
+      Laravel backend with REST API, React frontend, and TypeScript for type safety. 
+      Includes user authentication, order management, checkout, and admin functionalities with inventory history tracking
+      products, services, and categories management with image rendering for managing products and orders.`,
+    repoUrl: 'https://github.com/RonRonnix/PersonalPortfolio.git',
+    highlights: ['Laravel', 'React', 'PHP', 'PostgreSQL', 'REST', 'TailwindCSS', 'TypeScript'],
+    screenshots: [Rhaven1, Rhaven2, Rhaven3]
+  },
   {
     title: "Cyber",
     description: 
@@ -28,17 +47,6 @@ const projects = [
     repoUrl: 'https://github.com/RonRonnix/E-commerce.git',
     highlights: ['React', 'TypeScript', 'Vite'],
     screenshots: [cyberShot1, cyberShot2, cyberShot3]
-  },
-  {
-    title: "Rhaven's Garage",
-    description: 
-      `E-commerce platform for a motorcycle repair shop, featuring product listings, cart, and checkout functionality.
-      Laravel backend with REST API, React frontend, and TypeScript for type safety. 
-      Includes user authentication, order management, checkout, and admin functionalities with inventory history tracking
-      products, services, and categories management with image rendering for managing products and orders.`,
-    repoUrl: 'https://github.com/RonRonnix/PersonalPortfolio.git',
-    highlights: ['Laravel', 'React', 'PHP', 'MySQL', 'REST'],
-    screenshots: [Rhaven1, Rhaven2, Rhaven3]
   },
   {
     title: "Collaborative Whiteboard",
@@ -65,7 +73,7 @@ const projects = [
 const experienceImages = [
   {
     title: "BlendIToro Internship",
-    images: []
+    images: [blendit1, blendit2, blendit3, blendit4, blendit5, blendit6, blendit7, blendit8]
   }
 ]
 
@@ -159,18 +167,16 @@ function App() {
                 <h2 className="mb-4 text-2xl font-bold text-white sm:text-4xl">About Me</h2>
                 <div className="mt-6 h-px w-32 mb-4 bg-white/30 rounded-full"></div>
                 <ul className="max-w-5xl text-brand-100/80 leading-relaxed">
-                  <li>&bull; I'm a passionate fullstack developer with a strong focus on creating efficient, working, and user-friendly applications with a background in both frontend and backend development.</li>
-                  <li>&bull; I bring a holistic approach to solving complex problems and delivering high-quality solutions.</li>
-                  <li>&bull; I have created personal projects that showcase my skills in various technologies which includes Laravel, React, TypeScript, Node.js, and more.</li>
+                  <li>&bull; I'm a passionate fullstack developer with a strong focus on creating efficient, working, and user-friendly applications with hands-on experience in both frontend and backend development.</li>
+                  <li>&bull; I have created personal projects that showcase my skills in various technologies which includes Laravel, React, TypeScript, Node.js, TailwindCSS, and more..</li>
                   <li>&bull; I thrive in collaborative environments, where I can contribute to team projects and learn from others.</li>
-                  <li>&bull; My goal is to continuously improve my skills and stay up-to-date with the latest industry trends,</li>
-                  <li>&bull; ensuring that I can deliver innovative and effective solutions to any challenge I encounter.</li>
+                  <li>&bull; My goal is to continuously improve my skills and stay up-to-date with the latest industry trends, ensuring that I can deliver innovative and effective solutions to any challenge I encounter.</li>
                 </ul>
                 <div className="mt-6">
                   <Marquee
                     items={[
                       'Problem Solver',
-                      // 'Clean Code Advocate',
+                      'Clean Code Advocate',
                       'Team Collaborator',
                       'FrontEnd Developer',
                       'BackEnd Developer',
@@ -178,7 +184,7 @@ function App() {
                       'UI/UX Enthusiast',
                       'Continuous Learner',
                       'Performance Minded',
-                      // 'Test Writing',
+                      'Test Writing',
                       'Documentation',
                     ]}
                     direction="right"
@@ -222,27 +228,6 @@ function App() {
                   className="mt-5 py-5 border-y border-white/10"
                   speedSeconds={50}
                 />
-
-                {/* <div className="mt-10">
-                  <Marquee
-                    items={[
-                      'Problem Solver',
-                      // 'Clean Code Advocate',
-                      'Team Collaborator',
-                      'FrontEnd Developer',
-                      'BackEnd Developer',
-                      'Fullstack Developer',
-                      'UI/UX Enthusiast',
-                      'Continuous Learner',
-                      'Performance Minded',
-                      // 'Test Writing',
-                      'Documentation',
-                    ]}
-                    direction="right"
-                    className="py-4 border-y border-white/10"
-                    speedSeconds={65}
-                  />
-                </div> */}
               </div>
             </div>
           </div>

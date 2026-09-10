@@ -53,16 +53,16 @@ export default function Hero() {
         <Marquee
           items={[
             'TypeScript',
-            'JavaScript',
             'React',
             'HTML5',
-            'CSS3 / Tailwind',
+            'TailwindCSS',
             'REST APIs',
             'Vite',
             'Git / GitHub',
-            'Responsive Design',
-            'Accessibility (a11y)',
-            'Performance Optimization'
+            'Figma',
+            'Node.js',
+            'Express.js',
+            'MySQL',
           ]}
           className="py-4 border-y border-white/10"
           speedSeconds={65}
