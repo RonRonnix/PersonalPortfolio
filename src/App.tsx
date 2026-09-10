@@ -1,10 +1,9 @@
-import { useEffect, useRef, useState } from 'react'
+import { lazy, Suspense, useEffect, useRef, useState, type ReactNode } from 'react'
 import './App.css'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Marquee from './components/Marquee'
 import ImageMarquee from './components/ImageMarquee'
-import PixelBlast from './components/PixelBlast'
 import cyberShot1 from './assets/images/Cyber1.webp'
 import cyberShot2 from './assets/images/Cyber2.webp'
 import cyberShot3 from './assets/images/Cyber3.webp'
@@ -26,6 +25,55 @@ import blendit6 from './assets/images/blendit6.webp'
 import blendit7 from './assets/images/blendit7.webp'
 import blendit8 from './assets/images/blendit8.webp'
 
+const PixelBlast = lazy(() => import('./components/PixelBlast'))
+const email = 'gelicamer2working@gmail.com'
+const socialLinks = [
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/ronald-gelicame-0958003a7/' },
+  { label: 'GitHub', href: 'https://github.com/RonRonnix' },
+  { label: 'Facebook', href: 'https://www.facebook.com/RonaldGelicame.RG' }
+]
+
+function DecorativePixelBlast() {
+  const [showEffect, setShowEffect] = useState(false)
+
+  useEffect(() => {
+    const navigatorWithConnection = navigator as Navigator & {
+      connection?: { saveData?: boolean; effectiveType?: string }
+    }
+    const connection = navigatorWithConnection.connection
+    const deviceNavigator = navigator as Navigator & { deviceMemory?: number }
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    const slowConnection = connection?.saveData || connection?.effectiveType === 'slow-2g' || connection?.effectiveType === '2g'
+    const slowDevice = navigator.hardwareConcurrency <= 4 || (deviceNavigator.deviceMemory !== undefined && deviceNavigator.deviceMemory <= 4)
+    if (reduceMotion || slowConnection || slowDevice) return
+
+    const loadEffect = () => setShowEffect(true)
+    const idleCallback = window.requestIdleCallback?.(loadEffect, { timeout: 2000 })
+    const timeout = idleCallback === undefined ? window.setTimeout(loadEffect, 1500) : undefined
+
+    return () => {
+      if (idleCallback !== undefined) window.cancelIdleCallback?.(idleCallback)
+      if (timeout !== undefined) window.clearTimeout(timeout)
+    }
+  }, [])
+
+  if (!showEffect) return null
+
+  return (
+    <Suspense fallback={null}>
+      <PixelBlast
+        className="pointer-events-none fixed z-0 opacity-60"
+        color="#94a3b8"
+        pixelSize={3}
+        patternScale={5}
+        patternDensity={0.6}
+        speed={5}
+        edgeFade={0.35}
+      />
+    </Suspense>
+  )
+}
+
 const projects = [
   {
     title: "Rhaven's Garage",
@@ -34,7 +82,7 @@ const projects = [
       Laravel backend with REST API, React frontend, and TypeScript for type safety. 
       Includes user authentication, order management, checkout, and admin functionalities with inventory history tracking
       products, services, and categories management with image rendering for managing products and orders.`,
-    repoUrl: 'https://github.com/RonRonnix/PersonalPortfolio.git',
+    repoUrl: 'https://github.com/RonRonnix/Rhaven-s-Garage',
     highlights: ['Laravel', 'React', 'PHP', 'PostgreSQL', 'REST', 'TailwindCSS', 'TypeScript'],
     screenshots: [Rhaven1, Rhaven2, Rhaven3]
   },
@@ -76,6 +124,34 @@ const experienceImages = [
     images: [blendit1, blendit2, blendit3, blendit4, blendit5, blendit6, blendit7, blendit8]
   }
 ]
+
+function LazyMount({ children, className = '' }: { children: ReactNode; className?: string }) {
+  const containerRef = useRef<HTMLDivElement | null>(null)
+  const [shouldRender, setShouldRender] = useState(false)
+
+  useEffect(() => {
+    const container = containerRef.current
+    if (!container || shouldRender) return
+    if (!('IntersectionObserver' in window)) {
+      setShouldRender(true)
+      return
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return
+        setShouldRender(true)
+        observer.disconnect()
+      },
+      { rootMargin: '500px 0px', threshold: 0 }
+    )
+
+    observer.observe(container)
+    return () => observer.disconnect()
+  }, [shouldRender])
+
+  return <div ref={containerRef} className={className}>{shouldRender ? children : null}</div>
+}
 
 function App() {
   const aboutCardRef = useRef<HTMLDivElement | null>(null)
@@ -138,15 +214,8 @@ function App() {
 
   return (
     <div className="relative min-h-screen flex flex-col overflow-hidden">
-      <PixelBlast
-        className="pointer-events-none fixed z-0 opacity-60"
-        color="#94a3b8"
-        pixelSize={3}
-        patternScale={5}
-        patternDensity={0.6}
-        speed={5}
-        edgeFade={0.35}
-      />
+      <div aria-hidden="true" className="pointer-events-none fixed inset-0 z-0 background-texture" />
+      <DecorativePixelBlast />
       <Navbar />
       <main className="relative z-10 flex-1">
       <Hero />
@@ -172,7 +241,7 @@ function App() {
                   <li>&bull; I thrive in collaborative environments, where I can contribute to team projects and learn from others.</li>
                   <li>&bull; My goal is to continuously improve my skills and stay up-to-date with the latest industry trends, ensuring that I can deliver innovative and effective solutions to any challenge I encounter.</li>
                 </ul>
-                <div className="mt-6">
+                <LazyMount className="mt-6">
                   <Marquee
                     items={[
                       'Problem Solver',
@@ -191,7 +260,7 @@ function App() {
                     className="py-4 border-y border-white/10"
                     speedSeconds={65}
                   />
-                </div>
+                </LazyMount>
               </div>
             </div>
           </div>
@@ -220,14 +289,15 @@ function App() {
                   <li>&bull; I was assigned in a team of 5 interns with me being the only Front-End guy with another developer handling the mobile platform through Flutter, two developer being Back-end using Larvel and the last one being the PM who handles the project and the client.</li>
                 </ul>
 
-                <ImageMarquee
-                  items={experienceImages[0].images.map((src, index) => ({
-                    src,
-                    alt: `${experienceImages[0].title} images ${index + 1}`
-                  }))}
-                  className="mt-5 py-5 border-y border-white/10"
-                  speedSeconds={50}
-                />
+                <LazyMount className="mt-5 py-5 border-y border-white/10">
+                  <ImageMarquee
+                    items={experienceImages[0].images.map((src, index) => ({
+                      src,
+                      alt: `${experienceImages[0].title} images ${index + 1}`
+                    }))}
+                    speedSeconds={50}
+                  />
+                </LazyMount>
               </div>
             </div>
           </div>
@@ -263,7 +333,7 @@ function App() {
                       <div className="grid gap-6 lg:grid-cols-[1fr,1.3fr] lg:items-center">
                         <div>
                           <h3 className="text-xl font-semibold text-white">{project.title}</h3>
-                          <p className="mt-3 text-sm text-brand-100/80 leading-relaxed">{project.description}</p>
+                          <p className="mt-3 text-base text-brand-100/80 leading-relaxed">{project.description}</p>
                           <div className="mt-4 flex flex-wrap gap-2 text-xs text-brand-100/80">
                             {project.highlights.map(tag => (
                               <span key={tag} className="rounded-full border border-white/10 bg-brand-900/60 px-3 py-1">
@@ -284,19 +354,40 @@ function App() {
                             <div className="mt-5 text-sm text-brand-100/60">Add repo link</div>
                           )}
                         </div>
-                        <ImageMarquee
-                          items={project.screenshots.map((src, index) => ({
-                            src,
-                            alt: `${project.title} screenshot ${index + 1}`
-                          }))}
-                          className="py-5 border-y border-white/10"
-                          speedSeconds={50}
-                        />
+                        <LazyMount className="py-5 border-y border-white/10">
+                          <ImageMarquee
+                            items={project.screenshots.map((src, index) => ({
+                              src,
+                              alt: `${project.title} screenshot ${index + 1}`
+                            }))}
+                            speedSeconds={50}
+                          />
+                        </LazyMount>
                       </div>
                     </div>
                   ))}
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="contact" className="relative bg-brand-900/90 px-4 py-8 sm:py-10">
+          <div className="mx-auto max-w-7xl rounded-2xl border border-white/10 bg-brand-800/80 px-5 py-8 text-center shadow-[0_18px_50px_-28px_rgba(0,0,0,0.8)] sm:px-8 sm:py-10">
+            <p className="text-sm font-semibold tracking-wide text-emerald-200">LET&apos;S CONNECT</p>
+            <h2 className="mt-2 text-2xl font-bold text-white sm:text-4xl">Have a project in mind?</h2>
+            <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-brand-100/85">
+              I&apos;m happy to discuss web-development opportunities, collaborations, and new ideas.
+            </p>
+            <a href={`mailto:${email}`} className="mt-6 inline-flex rounded-md border border-emerald-300/60 bg-emerald-400/10 px-5 py-3 text-base font-semibold text-white transition-colors hover:bg-emerald-400/20 focus-ring">
+              Email me at {email}
+            </a>
+            <div className="mt-6 flex flex-wrap justify-center gap-x-6 gap-y-3 text-base font-medium">
+              {socialLinks.map(({ label, href }) => (
+                <a key={label} href={href} target="_blank" rel="noreferrer" className="text-brand-100/85 underline decoration-emerald-300/60 underline-offset-4 transition-colors hover:text-white focus-ring">
+                  {label}
+                </a>
+              ))}
             </div>
           </div>
         </section>

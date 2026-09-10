@@ -26,6 +26,7 @@ export default function Hero() {
               <div className="mt-6 flex flex-wrap items-center gap-4 sm:gap-5">
                 <a href={resumePdf} download className="inline-flex items-center rounded-md border border-emerald-300/60 bg-emerald-400/10 px-5 py-2.5 text-sm font-semibold text-white hover:bg-emerald-400/20 focus-ring transition-colors">Download resume</a>
                 <a href="#works" className="text-sm font-medium text-brand-100/80 hover:text-white focus-ring">View Works →</a>
+                <a href="#contact" className="text-sm font-medium text-brand-100/80 hover:text-white focus-ring">Contact me →</a>
               </div>
             </div>
 
