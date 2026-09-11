@@ -291,10 +291,10 @@ function App() {
                 <h2 className="mb-4 text-2xl font-bold text-white sm:text-4xl">My Experience</h2>
                 <div className="mt-6 h-px w-32 mb-4 bg-white/30 rounded-full"></div>
                 <ul className="max-w-5xl text-brand-100/80 leading-relaxed">
-                  <li>&bull; I was an intern in BlendIToro as a Front-End web developer where I was tased in handling the layout of the webpage and connecting back-end features to the front-end.</li>
+                  <li>&bull; I was an intern in BlendIToro as a Front-End web developer where I was tasked in handling the layout of the webpage and connecting back-end features to the front-end.</li>
                   <li>&bull; The things I learned:</li>
                   &ndash; React, PHP, Laravel, Postman, REST, SaaS, UI/UX, Flutter, Vercel Deployment
-                  <li>&bull; I was assigned in a team of 5 interns with me being the only Front-End guy with another developer handling the mobile platform through Flutter, two developer being Back-end using Larvel and the last one being the PM who handles the project and the client.</li>
+                  <li>&bull; I was assigned in a team of 5 interns with me being the only Front-End. Another developer handling the mobile platform through Flutter, two developer being Back-end using Laravel and the last one being the PM who handles the project and the client.</li>
                 </ul>
 
                 <LazyMount className="mt-5 min-h-[11.625rem] border-y border-white/10 py-5 sm:min-h-[13.5rem] md:min-h-[14.5rem]">
@@ -383,7 +383,7 @@ function App() {
         <section id="contact" className="relative bg-brand-900/90 px-4 py-8 sm:py-10">
           <div className="mx-auto max-w-7xl rounded-2xl border border-white/10 bg-brand-800/80 px-5 py-8 text-center shadow-[0_18px_50px_-28px_rgba(0,0,0,0.8)] sm:px-8 sm:py-10">
             <p className="text-sm font-semibold tracking-wide text-emerald-200">LET&apos;S CONNECT</p>
-            <h2 className="mt-2 text-2xl font-bold text-white sm:text-4xl">Have a project in mind?</h2>
+            <h2 className="mt-2 text-2xl font-bold text-white sm:text-4xl">Interested in working with me?</h2>
             <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-brand-100/85">
               I&apos;m happy to discuss web-development opportunities, collaborations, and new ideas.
             </p>

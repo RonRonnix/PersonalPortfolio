@@ -16,7 +16,7 @@ export default function Hero() {
             
             {/* Text content */}
             <div className="flex-1 max-w-xl animate-fade-up">
-              <p className="text-emerald-200 font-medium tracking-wide">Hello, I&apos;m Ronald Gelicame,</p>
+              <p className="text-emerald-200 font-medium tracking-wide">Hello, I&apos;m Ronald Gelicame, Currently I am a</p>
               <p className="mt-2 text-sm text-brand-100/75">Full-stack developer</p>
               <h1 className="text-gradient mt-1 text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl md:text-5xl">
                 <span className="block">Full stack</span>
