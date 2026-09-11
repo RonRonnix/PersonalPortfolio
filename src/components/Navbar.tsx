@@ -61,7 +61,10 @@ export default function Navbar() {
         return
       }
 
-      const marker = window.innerHeight * 0.7
+      // Highlight the section the visitor is currently reading, rather than
+      // waiting until its top reaches the fixed header. The cap keeps Home
+      // active on tall desktop screens until About is actually in view.
+      const marker = Math.min(window.innerHeight * 0.5, 420)
       const currentSection = sections.reduce((current, section) => (
         section.getBoundingClientRect().top <= marker ? section : current
       ), sections[0])
