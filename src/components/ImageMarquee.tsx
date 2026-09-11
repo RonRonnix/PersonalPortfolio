@@ -269,14 +269,6 @@ export default function ImageMarquee({ items, direction = 'left', className = ''
               ←
             </button>
           )}
-          <button
-            type="button"
-            onClick={() => setActiveIndex(null)}
-            className="absolute right-6 top-6 z-[1000] rounded-full border border-white/10 bg-brand-900/80 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-brand-900 focus-ring"
-            aria-label="Close image viewer"
-          >
-            Close
-          </button>
           {hasMultiple && (
             <button
               type="button"

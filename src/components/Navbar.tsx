@@ -45,7 +45,22 @@ export default function Navbar() {
     if (sections.length === 0) return
 
     const updateActiveSection = () => {
-      // A marker in the lower half also reaches the shorter final Contact section.
+      const contactSection = sections.find(section => section.id === 'contact')
+      if (contactSection) {
+        const { top, bottom } = contactSection.getBoundingClientRect()
+        const contactIsVisible = top < window.innerHeight - 56 && bottom > 56
+        if (contactIsVisible) {
+          setActive('contact')
+          return
+        }
+      }
+
+      const isAtPageEnd = window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 4
+      if (isAtPageEnd) {
+        setActive(sections[sections.length - 1].id)
+        return
+      }
+
       const marker = window.innerHeight * 0.7
       const currentSection = sections.reduce((current, section) => (
         section.getBoundingClientRect().top <= marker ? section : current
