@@ -52,6 +52,26 @@ main > section {
 
 .animate-slide-in-right { animation: slide-in-right 800ms ease-out both; }
 
+/* Smoothly expand and collapse the details cards, including their content. */
+.disclosure-content {
+	display: grid;
+	grid-template-rows: 0fr;
+	opacity: 0;
+	transition: grid-template-rows 320ms ease, opacity 180ms ease;
+}
+
+.group[data-open] > .disclosure-content {
+	grid-template-rows: 1fr;
+	opacity: 1;
+	transition: grid-template-rows 320ms ease, opacity 240ms ease 60ms;
+}
+
+/* Make screenshot cards feel interactive without changing the gallery layout. */
+.image-marquee-item:hover img,
+.image-marquee-item:focus-visible img {
+	transform: scale(1.045);
+}
+
 /* Respect visitors who request less motion, including many low-power devices. */
 @media (prefers-reduced-motion: reduce) {
 	*, *::before, *::after {
@@ -64,4 +84,7 @@ main > section {
 		opacity: 1 !important;
 		transform: none !important;
 	}
+
+	.disclosure-content { transition: none; }
+	.image-marquee-item:hover img, .image-marquee-item:focus-visible img { transform: none; }
 }

@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect, useRef, useState } from 'react'
+import { lazy, Suspense, useEffect, useRef, useState, type ReactNode } from 'react'
 import './App.css'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
@@ -148,6 +148,27 @@ const experienceImages = [
   }
 ]
 
+function Disclosure({ header, children, className = '' }: { header: ReactNode; children: ReactNode; className?: string }) {
+  const [isOpen, setIsOpen] = useState(false)
+
+  return (
+    <section className={`group rounded-xl border border-white/10 ${className}`} data-open={isOpen || undefined}>
+      <button
+        type="button"
+        onClick={() => setIsOpen(open => !open)}
+        aria-expanded={isOpen}
+        className="flex w-full cursor-pointer items-center justify-between gap-4 p-4 text-left focus-ring sm:p-5"
+      >
+        {header}
+        <span aria-hidden="true" className={`shrink-0 text-2xl text-emerald-200 transition-transform duration-300 ${isOpen ? 'rotate-45' : ''}`}>+</span>
+      </button>
+      <div className="disclosure-content border-t border-white/10">
+        <div className="overflow-hidden">{children}</div>
+      </div>
+    </section>
+  )
+}
+
 function App() {
   const aboutCardRef = useRef<HTMLDivElement | null>(null)
   const [aboutVisible, setAboutVisible] = useState(false)
@@ -276,28 +297,25 @@ function App() {
               <div className="mx-auto max-w-6xl px-5 py-6 sm:px-8 sm:py-8">
                 <h2 className="mb-4 text-2xl font-bold text-white sm:text-4xl">My Experience</h2>
                 <div className="mt-6 h-px w-32 mb-4 bg-white/30 rounded-full"></div>
-                <details className="group rounded-xl border border-white/10 bg-brand-900/40">
-                  <summary className="flex cursor-pointer list-none items-center justify-between gap-4 p-4 text-left [&::-webkit-details-marker]:hidden">
-                    <div>
+                <Disclosure className="bg-brand-900/40" header={<div>
                       <h3 className="text-lg font-semibold text-white">BlendIToro — Front-End Web Development Intern</h3>
                       <p className="mt-1 text-sm text-brand-100/75">Layout implementation, backend integration, and collaboration in a five-person internship team.</p>
+                    </div>}
+                >
+                    <div className="p-4 sm:p-5">
+                      <div className="space-y-2 text-base text-justify leading-relaxed text-brand-100/85">
+                        <p> During my internship at BlendToro, I contributed to the development of a client-focused web application by building the webpage with responsive and reusable interfaces with React and TypeScript and integrating REST APIs with backend services. 
+                          I collaborated with a five-person development team to translate client requirements into functional features, while contributing to UI/UX decisions, debugging, and application improvements. 
+                          I also gained experience with real-world deployment workflows through Vercel and worked closely with teammates to test, refine, and deliver application features.</p>
+                      </div>
+                      <p className="mt-4 text-sm font-medium text-emerald-100">Technologies: React, PHP, Laravel, Postman, REST APIs, SaaS, UI/UX, Flutter, and Vercel.</p>
+                      <ImageMarquee
+                        items={experienceImages[0].images.map((src, index) => ({ src, alt: `${experienceImages[0].title} image ${index + 1}` }))}
+                        className="mt-5 border-y border-white/10 py-5"
+                        speedSeconds={110}
+                      />
                     </div>
-                    <span aria-hidden="true" className="text-2xl text-emerald-200 transition-transform group-open:rotate-45">+</span>
-                  </summary>
-                  <div className="border-t border-white/10 p-4">
-                    <div className="space-y-2 text-base text-justify leading-relaxed text-brand-100/85">
-                      <p> During my internship at BlendToro, I contributed to the development of a client-focused web application by building the webpage with responsive and reusable interfaces with React and TypeScript and integrating REST APIs with backend services. 
-                        I collaborated with a five-person development team to translate client requirements into functional features, while contributing to UI/UX decisions, debugging, and application improvements. 
-                        I also gained experience with real-world deployment workflows through Vercel and worked closely with teammates to test, refine, and deliver application features.</p>
-                    </div>
-                    <p className="mt-4 text-sm font-medium text-emerald-100">Technologies: React, PHP, Laravel, Postman, REST APIs, SaaS, UI/UX, Flutter, and Vercel.</p>
-                    <ImageMarquee
-                      items={experienceImages[0].images.map((src, index) => ({ src, alt: `${experienceImages[0].title} image ${index + 1}` }))}
-                      className="mt-5 border-y border-white/10 py-5"
-                      speedSeconds={110}
-                    />
-                  </div>
-                </details>
+                </Disclosure>
               </div>
             </div>
           </div>
@@ -327,39 +345,36 @@ function App() {
 
                 <div className="mt-6 space-y-4">
                   {projects.map(project => (
-                    <details key={project.title} className="group rounded-xl border border-white/10 bg-brand-800/60">
-                      <summary className="flex cursor-pointer list-none items-center justify-between gap-4 p-4 text-left sm:p-5 [&::-webkit-details-marker]:hidden">
-                        <div>
+                    <Disclosure key={project.title} className="bg-brand-800/60" header={<div>
                           <h3 className="text-xl font-semibold text-white">{project.title}</h3>
                           <p className="mt-1 text-sm text-brand-100/75">{project.description}</p>
                           <p className="mt-2 text-xs font-medium text-emerald-100/80">Project date: {project.date}</p>
-                        </div>
-                        <span aria-hidden="true" className="shrink-0 text-2xl text-emerald-200 transition-transform group-open:rotate-45">+</span>
-                      </summary>
-                      <div className="border-t border-white/10 p-4 sm:p-5">
-                        <div>
-                          <h4 className="text-sm font-semibold uppercase tracking-wide text-emerald-200">Technical scope</h4>
-                          <ul className="mt-3 space-y-2 text-base text-justify leading-relaxed text-brand-100/85">
-                            {project.details.map(detail => <li key={detail}>{detail}</li>)}
-                          </ul>
-                          <h4 className="mt-5 text-sm font-semibold uppercase tracking-wide text-emerald-200">Stack</h4>
-                          <div className="mt-3 flex flex-wrap gap-2 text-sm text-brand-100/80">
-                            {project.highlights.map(tag => (
-                              <span key={tag} className="rounded-full border border-white/10 bg-brand-900/60 px-3 py-1">{tag}</span>
-                            ))}
+                        </div>}
+                    >
+                        <div className="p-4 sm:p-5">
+                          <div>
+                            <h4 className="text-sm font-semibold uppercase tracking-wide text-emerald-200">Technical scope</h4>
+                            <ul className="mt-3 space-y-2 text-base text-justify leading-relaxed text-brand-100/85">
+                              {project.details.map(detail => <li key={detail}>{detail}</li>)}
+                            </ul>
+                            <h4 className="mt-5 text-sm font-semibold uppercase tracking-wide text-emerald-200">Stack</h4>
+                            <div className="mt-3 flex flex-wrap gap-2 text-sm text-brand-100/80">
+                              {project.highlights.map(tag => (
+                                <span key={tag} className="rounded-full border border-white/10 bg-brand-900/60 px-3 py-1">{tag}</span>
+                              ))}
+                            </div>
+                            <ImageMarquee
+                              items={project.screenshots.map((src, index) => ({ src, alt: `${project.title} screenshot ${index + 1}` }))}
+                              className="mt-5 border-y border-white/10 py-5"
+                              speedSeconds={65}
+                            />
+                            {/* <p className="mt-5 text-sm text-brand-100/65">Live demo: </p> */}
+                            <a href={project.repoUrl} target="_blank" rel="noreferrer" className="mt-5 inline-flex text-sm font-semibold text-emerald-200 hover:text-white focus-ring">
+                              View source on GitHub →
+                            </a>
                           </div>
-                          <ImageMarquee
-                            items={project.screenshots.map((src, index) => ({ src, alt: `${project.title} screenshot ${index + 1}` }))}
-                            className="mt-5 border-y border-white/10 py-5"
-                            speedSeconds={65}
-                          />
-                          {/* <p className="mt-5 text-sm text-brand-100/65">Live demo: </p> */}
-                          <a href={project.repoUrl} target="_blank" rel="noreferrer" className="mt-5 inline-flex text-sm font-semibold text-emerald-200 hover:text-white focus-ring">
-                            View source on GitHub →
-                          </a>
                         </div>
-                      </div>
-                    </details>
+                    </Disclosure>
                   ))}
                 </div>
               </div>

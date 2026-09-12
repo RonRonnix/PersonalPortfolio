@@ -226,7 +226,7 @@ export default function ImageMarquee({ items, direction = 'left', className = ''
               (
                 <button
                   type="button"
-                  className="h-full w-full cursor-pointer border-0 bg-transparent p-0 focus-ring"
+                  className="image-marquee-item h-full w-full cursor-pointer border-0 bg-transparent p-0 focus-ring"
                   aria-label={`Open ${item.alt} in image viewer`}
                   aria-hidden={animated && index >= content.length}
                   tabIndex={animated && index >= content.length ? -1 : undefined}
@@ -235,7 +235,7 @@ export default function ImageMarquee({ items, direction = 'left', className = ''
                   <img
                     src={item.src}
                     alt={!animated || index < content.length ? item.alt : ''}
-                    className="h-full w-full object-contain bg-brand-900/40"
+                    className="h-full w-full object-contain bg-brand-900/40 transition-transform duration-300 ease-out"
                     loading="lazy"
                     decoding="async"
                   />
