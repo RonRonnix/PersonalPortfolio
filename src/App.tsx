@@ -83,10 +83,10 @@ const projects = [
     title: "Rhaven's Garage",
     description: 'A full-stack e-commerce and operations platform for a motorcycle repair shop.',
     details: [
-      `Rhaven is a full-stack e-commerce and appointment-booking platform built with Laravel 13, PHP, React 19, TypeScript, Inertia.js, Vite, and Tailwind CSS. 
+      `Rhaven's Garage is a full-stack e-commerce and appointment-booking platform built with Laravel 13, PHP, React 19, TypeScript, Inertia.js, Vite, and Tailwind CSS. 
       It provides a public storefront, product and service catalogs, shopping cart, checkout, customer accounts, appointment scheduling, inventory management, order fulfillment, and administrative dashboards. 
       The platform uses PayMongo for secure hosted payments and refunds, n8n for automated order and inquiry workflows, Resend for transactional email, Cloudflare Turnstile for bot protection, and Sentry for error monitoring. 
-      Authentication is handled through Laravel Fortify with email verification, password reset, two-factor authentication, and passkey support, while Spatie Permission provides role-based authorization for customers, administrators, and owners. 
+      Authentication is handled through Laravel Fortify with email verification, password reset, two-factor authentication, while Spatie Permission provides role-based authorization for customers, administrators, and owners. 
       Additional security features include CSRF protection, rate limiting, secure cookies, security headers, activity logging, signed payment webhooks, database transactions, inventory reservations, Redis queues, and automated PostgreSQL backup and restore verification.`
     ],
     date: 'July 28, 2026 - September 5, 2026',
@@ -98,7 +98,7 @@ const projects = [
     title: "Cyber",
     description: 'A responsive e-commerce storefront focused on the customer purchase flow.',
     details: [
-      `E-commerce is a full-stack online shopping platform built with React, TypeScript, Vite, Tailwind CSS, Node.js, Express, Prisma, and PostgreSQL. 
+      `Cyber is a full-stack online shopping platform built with React, TypeScript, Vite, Tailwind CSS, Node.js, Express, Prisma, and PostgreSQL. 
       The application supports product browsing, product management, shopping carts, wishlists, customer profiles, addresses, orders, reviews, admin analytics, image uploads, and role-based administration. 
       It uses JWT authentication with secure HTTP-only cookies, bcrypt password hashing, Zod validation, CSRF protection, CORS controls, rate limiting, and security headers. 
       Payments are handled through PayMongo, supporting cards, GCash, PayMaya, checkout sessions, webhooks, and refunds. 
@@ -285,11 +285,11 @@ function App() {
                     <span aria-hidden="true" className="text-2xl text-emerald-200 transition-transform group-open:rotate-45">+</span>
                   </summary>
                   <div className="border-t border-white/10 p-4">
-                    <ul className="space-y-2 text-base leading-relaxed text-brand-100/85">
-                      <li>Built and refined the website&apos;s front-end layouts.</li>
-                      <li>Connected backend features to the React interface.</li>
-                      <li>Collaborated with Flutter, Laravel, and project-management teammates.</li>
-                    </ul>
+                    <div className="space-y-2 text-base leading-relaxed text-brand-100/85">
+                      <p> During my internship at BlendToro, I contributed to the development of a client-focused web application by building the webpage with responsive and reusable interfaces with React and TypeScript and integrating REST APIs with backend services. 
+                        I collaborated with a five-person development team to translate client requirements into functional features, while contributing to UI/UX decisions, debugging, and application improvements. 
+                        I also gained experience with real-world deployment workflows through Vercel and worked closely with teammates to test, refine, and deliver application features.</p>
+                    </div>
                     <p className="mt-4 text-sm font-medium text-emerald-100">Technologies: React, PHP, Laravel, Postman, REST APIs, SaaS, UI/UX, Flutter, and Vercel.</p>
                     <ImageMarquee
                       items={experienceImages[0].images.map((src, index) => ({ src, alt: `${experienceImages[0].title} image ${index + 1}` }))}
