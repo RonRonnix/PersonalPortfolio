@@ -22,7 +22,7 @@ export default function Hero() {
                 <span className="block">FULL-STACK</span>
                 <span className="block">DEVELOPER</span>
               </h1>
-              <p className="mt-4 max-w-md text-base leading-relaxed text-brand-100/85">Based in Bohol, Philippines. I build practical, user-friendly web applications across the front end and back end.</p>
+              <p className="mt-4 max-w-md text-base leading-relaxed text-brand-100/85">I work across React, TypeScript, Node.js, Laravel, and relational databases, with experience building APIs, authentication systems, real-time applications, and end-to-end products.</p>
               <div className="mt-6 flex flex-wrap items-center gap-4 sm:gap-5">
                 <a href={resumePdf} download className="inline-flex items-center rounded-md border border-emerald-300/60 bg-emerald-400/10 px-5 py-2.5 text-sm font-semibold text-white hover:bg-emerald-400/20 focus-ring transition-colors">Download resume</a>
                 <a href="#works" className="text-sm font-medium text-brand-100/80 hover:text-white focus-ring">View Works →</a>
