@@ -215,7 +215,7 @@ export default function ImageMarquee({ items, direction = 'left', className = ''
   }
 
   return (
-    <div className={`group relative w-full min-w-0 select-none ${animated ? 'overflow-hidden' : ''} ${className}`}>
+    <div className={`image-marquee relative w-full min-w-0 select-none ${animated ? 'overflow-hidden' : ''} ${className}`}>
       <div className={animated ? `flex w-max gap-6 pr-6 ${animationClass}` : 'grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3'} style={animated ? style : undefined}>
         {displayedItems.map((item, index) => (
           <div

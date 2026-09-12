@@ -33,7 +33,7 @@ const socialLinks = [
 ]
 
 const skillGroups = [
-  { title: 'Frontend', skills: ['React', 'TypeScript', 'HTML5', 'Tailwind CSS', 'Figma'] },
+  { title: 'Frontend', skills: ['React', 'TypeScript', 'Tailwind CSS', 'Figma'] },
   { title: 'Backend', skills: ['PHP', 'Laravel', 'Node.js', 'Express.js', 'REST APIs'] },
   { title: 'Database', skills: ['PostgreSQL', 'MySQL'] },
   { title: 'Tools', skills: ['Git', 'GitHub', 'Vite', 'Postman', 'Vercel', 'Canvas', 'Sockets'] }
@@ -83,10 +83,13 @@ const projects = [
     title: "Rhaven's Garage",
     description: 'A full-stack e-commerce and operations platform for a motorcycle repair shop.',
     details: [
-      'Built a Laravel REST API with a React and TypeScript client.',
-      'Implemented authentication, product browsing, cart, checkout, and order management.',
-      'Created admin workflows for inventory history, products, services, categories, and order images.'
+      `Rhaven is a full-stack e-commerce and appointment-booking platform built with Laravel 13, PHP, React 19, TypeScript, Inertia.js, Vite, and Tailwind CSS. 
+      It provides a public storefront, product and service catalogs, shopping cart, checkout, customer accounts, appointment scheduling, inventory management, order fulfillment, and administrative dashboards. 
+      The platform uses PayMongo for secure hosted payments and refunds, n8n for automated order and inquiry workflows, Resend for transactional email, Cloudflare Turnstile for bot protection, and Sentry for error monitoring. 
+      Authentication is handled through Laravel Fortify with email verification, password reset, two-factor authentication, and passkey support, while Spatie Permission provides role-based authorization for customers, administrators, and owners. 
+      Additional security features include CSRF protection, rate limiting, secure cookies, security headers, activity logging, signed payment webhooks, database transactions, inventory reservations, Redis queues, and automated PostgreSQL backup and restore verification.`
     ],
+    date: 'July 28, 2026 - September 5, 2026',
     repoUrl: 'https://github.com/RonRonnix/Rhaven-s-Garage',
     highlights: ['Laravel', 'React', 'PHP', 'PostgreSQL', 'REST', 'TailwindCSS', 'TypeScript'],
     screenshots: [Rhaven1, Rhaven2, Rhaven3]
@@ -95,10 +98,13 @@ const projects = [
     title: "Cyber",
     description: 'A responsive e-commerce storefront focused on the customer purchase flow.',
     details: [
-      'Built product browsing, cart, and checkout interfaces with React and TypeScript.',
-      'Used Vite for a fast development and production build workflow.',
-      'Designed the interface around clear browsing and purchasing steps.'
+      `E-commerce is a full-stack online shopping platform built with React, TypeScript, Vite, Tailwind CSS, Node.js, Express, Prisma, and PostgreSQL. 
+      The application supports product browsing, product management, shopping carts, wishlists, customer profiles, addresses, orders, reviews, admin analytics, image uploads, and role-based administration. 
+      It uses JWT authentication with secure HTTP-only cookies, bcrypt password hashing, Zod validation, CSRF protection, CORS controls, rate limiting, and security headers. 
+      Payments are handled through PayMongo, supporting cards, GCash, PayMaya, checkout sessions, webhooks, and refunds. 
+      The project also includes backend testing with Vitest and Supertest, database seeding, operational documentation, and separate customer and administrator workflows.`
     ],
+    date: 'December 20, 2025 - May 26, 2026',
     repoUrl: 'https://github.com/RonRonnix/E-commerce.git',
     highlights: ['React', 'TypeScript', 'Vite'],
     screenshots: [cyberShot1, cyberShot2, cyberShot3]
@@ -107,22 +113,28 @@ const projects = [
     title: "Collaborative Whiteboard",
     description: 'A collaborative drawing application for shared boards and real-time interaction.',
     details: [
-      'Built a canvas-based drawing experience with board and sharing features.',
-      'Added real-time collaboration and messaging with socket-based communication.',
-      'Developed the frontend with React and TypeScript.'
+      `Whiteboard is a full-stack realtime collaboration application built with React, TypeScript, Vite, Tailwind CSS, Express, Prisma, PostgreSQL, and Socket.IO. 
+      The platform allows authenticated users to register, verify their email, create collaborative rooms, invite others using room codes, and work together through a shared drawing canvas and realtime chat. 
+      Drawing is implemented with the browser’s HTML Canvas API, while Socket.IO synchronizes strokes, cursor movements, participant presence, chat messages, and board updates between connected users. 
+      The backend uses JWT authentication, bcrypt password hashing, Zod validation, protected API routes, CORS configuration, and database relationships managed through Prisma. 
+      User accounts, rooms, invite codes, and verification records are stored in PostgreSQL, while active collaboration state is maintained in memory for fast realtime interaction.`
     ],
+    date: 'November 23, 2025 - January 19, 2026',
     repoUrl: 'https://github.com/RonRonnix/Whiteboard.git',
-    highlights: ['React', 'Sockets', 'Canvas'],
+    highlights: ['React + Typescript', 'Vite', 'TailwindCSS', 'Prisma', 'Express', 'Prisma', 'Sockets', 'Canvas'],
     screenshots: [Whiteboard1, Whiteboard2, Whiteboard3]
   },
   {
     title: "Notes App",
     description: 'A personal note-taking application for creating, organizing, and finding notes quickly.',
     details: [
-      'Implemented authentication, note creation and editing, tags, and search.',
-      'Connected the React and TypeScript client to REST endpoints.',
-      'Focused the interface on quick retrieval and everyday note management.'
+      `NoteApp is a full-stack note-taking application built with React, TypeScript, Vite, React Router, and Tailwind CSS on the frontend, with a Node.js, Express, and TypeScript backend. 
+      The application uses PostgreSQL for persistent storage and provides authenticated user registration and login through bcrypt password hashing and JSON Web Tokens. 
+      Authenticated users can create, view, edit, and delete their own notes through a REST API, while server-side authorization ensures that users cannot access or modify notes belonging to other accounts. 
+      The project also includes request validation with Zod, parameterized SQL queries, Helmet security headers, CORS configuration, responsive layouts, modal-based note editing, confirmation dialogs, loading states, and error handling. 
+      Its architecture separates the frontend interface, backend API, authentication layer, and database access, making it a practical example of a modern full-stack CRUD application.`
     ],
+    date: 'October 13, 2025 - November 3, 2025',
     repoUrl: 'https://github.com/RonRonnix/noteapp.git',
     highlights: ['React', 'TypeScript', 'REST'],
     screenshots: [Notes1, Notes2, Notes3]
@@ -225,10 +237,10 @@ function App() {
               }
             >
               <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_25%_35%,rgba(255,255,255,0.06),transparent_70%)]" />
-              <div className="mx-auto max-w-5xl px-5 py-6 sm:px-8 sm:py-8">
+              <div className="mx-auto max-w-6xl px-5 py-6 sm:px-8 sm:py-8">
                 <h2 className="mb-4 text-2xl font-bold text-white sm:text-4xl">About Me</h2>
                 <div className="mt-6 h-px w-32 mb-4 bg-white/30 rounded-full"></div>
-                <div className="max-w-3xl space-y-4 text-base leading-relaxed text-brand-100/85">
+                <div className="max-w-3xl space-y-4 text-base leading-relaxed text-justify text-brand-100/85">
                   <p>I&apos;m a full-stack developer based in Bohol, Philippines. I build practical web applications with React, TypeScript, Laravel, REST APIs, and PostgreSQL.</p>
                   <p>My recent work includes e-commerce flows, real-time collaboration tools, and note-management applications. I work across user interfaces, backend features, and the data layer that supports them.</p>
                 </div>
@@ -261,7 +273,7 @@ function App() {
               }
             >
               <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_25%_35%,rgba(255,255,255,0.06),transparent_70%)]" />
-              <div className="mx-auto max-w-5xl px-5 py-6 sm:px-8 sm:py-8">
+              <div className="mx-auto max-w-6xl px-5 py-6 sm:px-8 sm:py-8">
                 <h2 className="mb-4 text-2xl font-bold text-white sm:text-4xl">My Experience</h2>
                 <div className="mt-6 h-px w-32 mb-4 bg-white/30 rounded-full"></div>
                 <details className="group rounded-xl border border-white/10 bg-brand-900/40">
@@ -281,8 +293,8 @@ function App() {
                     <p className="mt-4 text-sm font-medium text-emerald-100">Technologies: React, PHP, Laravel, Postman, REST APIs, SaaS, UI/UX, Flutter, and Vercel.</p>
                     <ImageMarquee
                       items={experienceImages[0].images.map((src, index) => ({ src, alt: `${experienceImages[0].title} image ${index + 1}` }))}
-                      animated={false}
-                      className="mt-5"
+                      className="mt-5 border-y border-white/10 py-5"
+                      speedSeconds={110}
                     />
                   </div>
                 </details>
@@ -292,7 +304,7 @@ function App() {
           <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent via-brand-900/70 to-brand-900" />
         </section>
         
-      {/* Encapsulating box for Selected Works */}
+      {/* Encapsulating box for my work */}
         <section id="works" className="relative overflow-hidden bg-brand-900/80 px-4 py-5 sm:py-6">
           <div className="relative max-w-7xl mx-auto">
             <div
@@ -305,9 +317,10 @@ function App() {
               <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_25%_35%,rgba(255,255,255,0.06),transparent_70%)]" />
               <div className="mx-auto max-w-6xl px-5 py-7 sm:px-8 sm:py-9 md:px-10 md:py-10">
                 <div className="max-w-3xl">
-                  <h2 className="mb-3 text-2xl font-bold text-white sm:text-4xl">Selected Projects</h2>
+                  <h2 className="mb-3 text-2xl font-bold text-white sm:text-4xl">My Projects</h2>
                   <div className="mt-6 h-px w-32 mb-4 bg-white/30 rounded-full"></div>
-                  <p className="text-brand-100/80 leading-relaxed">
+                  <p className="text-brand-100/80 text-justify leading-relaxed">
+                    Here are some of my recent projects. Each project includes a description, technical scope, stack, screenshots, and a link to the source code on GitHub.
                     Expand a project to review its technical scope, stack, screenshots, and source code.
                   </p>
                 </div>
@@ -319,30 +332,31 @@ function App() {
                         <div>
                           <h3 className="text-xl font-semibold text-white">{project.title}</h3>
                           <p className="mt-1 text-sm text-brand-100/75">{project.description}</p>
+                          <p className="mt-2 text-xs font-medium text-emerald-100/80">Project date: {project.date}</p>
                         </div>
                         <span aria-hidden="true" className="shrink-0 text-2xl text-emerald-200 transition-transform group-open:rotate-45">+</span>
                       </summary>
                       <div className="border-t border-white/10 p-4 sm:p-5">
-                        <div className="grid gap-6 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:items-start">
-                          <div>
-                            <h4 className="text-sm font-semibold uppercase tracking-wide text-emerald-200">Technical scope</h4>
-                            <ul className="mt-3 space-y-2 text-base leading-relaxed text-brand-100/85">
-                              {project.details.map(detail => <li key={detail}>{detail}</li>)}
-                            </ul>
-                            <h4 className="mt-5 text-sm font-semibold uppercase tracking-wide text-emerald-200">Stack</h4>
-                            <div className="mt-3 flex flex-wrap gap-2 text-sm text-brand-100/80">
-                              {project.highlights.map(tag => (
-                                <span key={tag} className="rounded-full border border-white/10 bg-brand-900/60 px-3 py-1">{tag}</span>
-                              ))}
-                            </div>
-                            <a href={project.repoUrl} target="_blank" rel="noreferrer" className="mt-5 inline-flex text-sm font-semibold text-emerald-200 hover:text-white focus-ring">
-                              View source on GitHub →
-                            </a>
+                        <div>
+                          <h4 className="text-sm font-semibold uppercase tracking-wide text-emerald-200">Technical scope</h4>
+                          <ul className="mt-3 space-y-2 text-base text-justify leading-relaxed text-brand-100/85">
+                            {project.details.map(detail => <li key={detail}>{detail}</li>)}
+                          </ul>
+                          <h4 className="mt-5 text-sm font-semibold uppercase tracking-wide text-emerald-200">Stack</h4>
+                          <div className="mt-3 flex flex-wrap gap-2 text-sm text-brand-100/80">
+                            {project.highlights.map(tag => (
+                              <span key={tag} className="rounded-full border border-white/10 bg-brand-900/60 px-3 py-1">{tag}</span>
+                            ))}
                           </div>
                           <ImageMarquee
                             items={project.screenshots.map((src, index) => ({ src, alt: `${project.title} screenshot ${index + 1}` }))}
-                            animated={false}
+                            className="mt-5 border-y border-white/10 py-5"
+                            speedSeconds={65}
                           />
+                          {/* <p className="mt-5 text-sm text-brand-100/65">Live demo: </p> */}
+                          <a href={project.repoUrl} target="_blank" rel="noreferrer" className="mt-5 inline-flex text-sm font-semibold text-emerald-200 hover:text-white focus-ring">
+                            View source on GitHub →
+                          </a>
                         </div>
                       </div>
                     </details>

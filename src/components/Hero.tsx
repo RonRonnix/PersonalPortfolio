@@ -55,13 +55,13 @@ export default function Hero() {
           items={[
             'TypeScript',
             'React',
-            'HTML5',
             'TailwindCSS',
             'REST APIs',
             'Vite',
             'Git / GitHub',
             'Figma',
             'Node.js',
+            'Next.js',
             'Express.js',
             'MySQL',
           ]}

@@ -19,7 +19,7 @@ export default function Marquee({ items, direction = 'left', className = '', spe
   const content = [...items, ...items]
 
   return (
-    <div className={`group relative overflow-hidden select-none ${className}`}>      
+    <div className={`marquee-container relative overflow-hidden select-none ${className}`}>      
       <div
         className={`marquee-track flex w-max gap-12 pr-12 ${animationClass}`}
         style={style}

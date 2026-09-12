@@ -11,5 +11,7 @@
 .animate-marquee-reverse { animation: marquee 25s linear infinite reverse; }
 
 /* Pause on hover (optional) */
-.group:hover .animate-marquee,
-.group:hover .animate-marquee-reverse { animation-play-state: paused; }
+.marquee-container:hover .animate-marquee,
+.marquee-container:hover .animate-marquee-reverse,
+.image-marquee:hover .animate-marquee,
+.image-marquee:hover .animate-marquee-reverse { animation-play-state: paused; }
