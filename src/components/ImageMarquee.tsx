@@ -11,9 +11,10 @@ interface ImageMarqueeProps {
   direction?: 'left' | 'right'
   className?: string
   speedSeconds?: number
+  animated?: boolean
 }
 
-export default function ImageMarquee({ items, direction = 'left', className = '', speedSeconds }: ImageMarqueeProps) {
+export default function ImageMarquee({ items, direction = 'left', className = '', speedSeconds, animated = true }: ImageMarqueeProps) {
   const animationClass = direction === 'left' ? 'animate-marquee' : 'animate-marquee-reverse'
   const style: React.CSSProperties | undefined = speedSeconds ? { animationDuration: `${speedSeconds}s` } : undefined
   const [activeIndex, setActiveIndex] = useState<number | null>(null)
@@ -44,7 +45,7 @@ export default function ImageMarquee({ items, direction = 'left', className = ''
   const content = (items.length ? items : fallbackItems)
   const activeImage = activeIndex !== null ? content[activeIndex] : null
   const hasMultiple = content.length > 1
-  const looped = [...content, ...content]
+  const displayedItems = animated ? [...content, ...content] : content
 
   useEffect(() => {
     if (!activeImage) return
@@ -214,12 +215,12 @@ export default function ImageMarquee({ items, direction = 'left', className = ''
   }
 
   return (
-    <div className={`group relative w-full min-w-0 overflow-hidden select-none ${className}`}>
-      <div className={`flex w-max gap-6 pr-6 ${animationClass}`} style={style}>
-        {looped.map((item, index) => (
+    <div className={`group relative w-full min-w-0 select-none ${animated ? 'overflow-hidden' : ''} ${className}`}>
+      <div className={animated ? `flex w-max gap-6 pr-6 ${animationClass}` : 'grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3'} style={animated ? style : undefined}>
+        {displayedItems.map((item, index) => (
           <div
             key={`${item.alt}-${index}`}
-            className="flex h-36 w-60 items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-brand-800/70 shadow-[0_12px_30px_-20px_rgba(0,0,0,0.8)] sm:h-44 sm:w-72 md:h-48 md:w-80"
+            className={`${animated ? 'h-36 w-60 sm:h-44 sm:w-72 md:h-48 md:w-80' : 'h-44 w-full'} flex items-center justify-center overflow-hidden rounded-xl border border-white/10 bg-brand-800/70 shadow-[0_12px_30px_-20px_rgba(0,0,0,0.8)]`}
           >
             {item.src ? (
               (
@@ -227,13 +228,13 @@ export default function ImageMarquee({ items, direction = 'left', className = ''
                   type="button"
                   className="h-full w-full cursor-pointer border-0 bg-transparent p-0 focus-ring"
                   aria-label={`Open ${item.alt} in image viewer`}
-                  aria-hidden={index >= content.length}
-                  tabIndex={index >= content.length ? -1 : undefined}
+                  aria-hidden={animated && index >= content.length}
+                  tabIndex={animated && index >= content.length ? -1 : undefined}
                   onClick={() => setActiveIndex(index % content.length)}
                 >
                   <img
                     src={item.src}
-                    alt={index < content.length ? item.alt : ''}
+                    alt={!animated || index < content.length ? item.alt : ''}
                     className="h-full w-full object-contain bg-brand-900/40"
                     loading="lazy"
                     decoding="async"
@@ -249,8 +250,10 @@ export default function ImageMarquee({ items, direction = 'left', className = ''
         ))}
       </div>
 
-      <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-brand-900 via-brand-900/70 to-transparent" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-brand-900 via-brand-900/70 to-transparent" />
+      {animated && <>
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-brand-900 via-brand-900/70 to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-brand-900 via-brand-900/70 to-transparent" />
+      </>}
 
       {activeImage?.src && createPortal(
         <div

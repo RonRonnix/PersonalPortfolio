@@ -1,8 +1,7 @@
-import { lazy, Suspense, useEffect, useRef, useState, type ReactNode } from 'react'
+import { lazy, Suspense, useEffect, useRef, useState } from 'react'
 import './App.css'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
-import Marquee from './components/Marquee'
 import ImageMarquee from './components/ImageMarquee'
 import cyberShot1 from './assets/images/Cyber1.webp'
 import cyberShot2 from './assets/images/Cyber2.webp'
@@ -31,6 +30,13 @@ const socialLinks = [
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/ronald-gelicame-0958003a7/' },
   { label: 'GitHub', href: 'https://github.com/RonRonnix' },
   { label: 'Facebook', href: 'https://www.facebook.com/RonaldGelicame.RG' }
+]
+
+const skillGroups = [
+  { title: 'Frontend', skills: ['React', 'TypeScript', 'HTML5', 'Tailwind CSS', 'Figma'] },
+  { title: 'Backend', skills: ['PHP', 'Laravel', 'Node.js', 'Express.js', 'REST APIs'] },
+  { title: 'Database', skills: ['PostgreSQL', 'MySQL'] },
+  { title: 'Tools', skills: ['Git', 'GitHub', 'Vite', 'Postman', 'Vercel', 'Canvas', 'Sockets'] }
 ]
 
 function DecorativePixelBlast() {
@@ -75,41 +81,48 @@ function DecorativePixelBlast() {
 const projects = [
   {
     title: "Rhaven's Garage",
-    description: 
-      `E-commerce platform for a motorcycle repair shop, featuring product listings, cart, and checkout functionality.
-      Laravel backend with REST API, React frontend, and TypeScript for type safety. 
-      Includes user authentication, order management, checkout, and admin functionalities with inventory history tracking
-      products, services, and categories management with image rendering for managing products and orders.`,
+    description: 'A full-stack e-commerce and operations platform for a motorcycle repair shop.',
+    details: [
+      'Built a Laravel REST API with a React and TypeScript client.',
+      'Implemented authentication, product browsing, cart, checkout, and order management.',
+      'Created admin workflows for inventory history, products, services, categories, and order images.'
+    ],
     repoUrl: 'https://github.com/RonRonnix/Rhaven-s-Garage',
     highlights: ['Laravel', 'React', 'PHP', 'PostgreSQL', 'REST', 'TailwindCSS', 'TypeScript'],
     screenshots: [Rhaven1, Rhaven2, Rhaven3]
   },
   {
     title: "Cyber",
-    description: 
-      `E-commerce storefront with product browsing, cart, and checkout flow.
-      Built with React, TypeScript, and Vite for a fast and responsive user experience.
-      Features include product listings, shopping cart, and checkout functionality with a focus on performance and user experience.`,
+    description: 'A responsive e-commerce storefront focused on the customer purchase flow.',
+    details: [
+      'Built product browsing, cart, and checkout interfaces with React and TypeScript.',
+      'Used Vite for a fast development and production build workflow.',
+      'Designed the interface around clear browsing and purchasing steps.'
+    ],
     repoUrl: 'https://github.com/RonRonnix/E-commerce.git',
     highlights: ['React', 'TypeScript', 'Vite'],
     screenshots: [cyberShot1, cyberShot2, cyberShot3]
   },
   {
     title: "Collaborative Whiteboard",
-    description: 
-      `Real-time drawing canvas with boards, tools, and sharing.
-      Built with React, TypeScript, and Vite for a fast and responsive user experience.
-      Features include real-time collaboration, drawing tools, sharing capabilities, and real-time messaging.`,
+    description: 'A collaborative drawing application for shared boards and real-time interaction.',
+    details: [
+      'Built a canvas-based drawing experience with board and sharing features.',
+      'Added real-time collaboration and messaging with socket-based communication.',
+      'Developed the frontend with React and TypeScript.'
+    ],
     repoUrl: 'https://github.com/RonRonnix/Whiteboard.git',
     highlights: ['React', 'Sockets', 'Canvas'],
     screenshots: [Whiteboard1, Whiteboard2, Whiteboard3]
   },
   {
     title: "Notes App",
-    description: 
-      `Personal notes with auth, tags, and quick search.
-      Built with React, TypeScript, and Vite for a fast and responsive user experience.
-      Features include note creation, editing, tagging, and quick search functionality.`,
+    description: 'A personal note-taking application for creating, organizing, and finding notes quickly.',
+    details: [
+      'Implemented authentication, note creation and editing, tags, and search.',
+      'Connected the React and TypeScript client to REST endpoints.',
+      'Focused the interface on quick retrieval and everyday note management.'
+    ],
     repoUrl: 'https://github.com/RonRonnix/noteapp.git',
     highlights: ['React', 'TypeScript', 'REST'],
     screenshots: [Notes1, Notes2, Notes3]
@@ -122,34 +135,6 @@ const experienceImages = [
     images: [blendit1, blendit2, blendit3, blendit4, blendit5, blendit6, blendit7, blendit8]
   }
 ]
-
-function LazyMount({ children, className = '' }: { children: ReactNode; className?: string }) {
-  const containerRef = useRef<HTMLDivElement | null>(null)
-  const [shouldRender, setShouldRender] = useState(false)
-
-  useEffect(() => {
-    const container = containerRef.current
-    if (!container || shouldRender) return
-    if (!('IntersectionObserver' in window)) {
-      setShouldRender(true)
-      return
-    }
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry.isIntersecting) return
-        setShouldRender(true)
-        observer.disconnect()
-      },
-      { rootMargin: '500px 0px', threshold: 0 }
-    )
-
-    observer.observe(container)
-    return () => observer.disconnect()
-  }, [shouldRender])
-
-  return <div ref={containerRef} className={className}>{shouldRender ? children : null}</div>
-}
 
 function App() {
   const aboutCardRef = useRef<HTMLDivElement | null>(null)
@@ -243,32 +228,21 @@ function App() {
               <div className="mx-auto max-w-5xl px-5 py-6 sm:px-8 sm:py-8">
                 <h2 className="mb-4 text-2xl font-bold text-white sm:text-4xl">About Me</h2>
                 <div className="mt-6 h-px w-32 mb-4 bg-white/30 rounded-full"></div>
-                <ul className="max-w-5xl text-brand-100/80 leading-relaxed">
-                  <li>&bull; I'm a passionate fullstack developer with a strong focus on creating efficient, working, and user-friendly applications with hands-on experience in both frontend and backend development.</li>
-                  <li>&bull; I have created personal projects that showcase my skills in various technologies which includes Laravel, React, TypeScript, Node.js, TailwindCSS, and more..</li>
-                  <li>&bull; I thrive in collaborative environments, where I can contribute to team projects and learn from others.</li>
-                  <li>&bull; My goal is to continuously improve my skills and stay up-to-date with the latest industry trends, ensuring that I can deliver innovative and effective solutions to any challenge I encounter.</li>
-                </ul>
-                <LazyMount className="mt-6 min-h-14">
-                  <Marquee
-                    items={[
-                      'Problem Solver',
-                      'Clean Code Advocate',
-                      'Team Collaborator',
-                      'FrontEnd Developer',
-                      'BackEnd Developer',
-                      'Fullstack Developer',
-                      'UI/UX Enthusiast',
-                      'Continuous Learner',
-                      'Performance Minded',
-                      'Test Writing',
-                      'Documentation',
-                    ]}
-                    direction="right"
-                    className="py-4 border-y border-white/10"
-                    speedSeconds={65}
-                  />
-                </LazyMount>
+                <div className="max-w-3xl space-y-4 text-base leading-relaxed text-brand-100/85">
+                  <p>I&apos;m a full-stack developer based in Bohol, Philippines. I build practical web applications with React, TypeScript, Laravel, REST APIs, and PostgreSQL.</p>
+                  <p>My recent work includes e-commerce flows, real-time collaboration tools, and note-management applications. I work across user interfaces, backend features, and the data layer that supports them.</p>
+                </div>
+
+                <div className="mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+                  {skillGroups.map(group => (
+                    <section key={group.title} className="rounded-xl border border-white/10 bg-brand-900/40 p-4">
+                      <h3 className="text-base font-semibold text-white">{group.title}</h3>
+                      <ul className="mt-3 space-y-2 text-sm text-brand-100/80">
+                        {group.skills.map(skill => <li key={skill}>{skill}</li>)}
+                      </ul>
+                    </section>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
@@ -290,22 +264,28 @@ function App() {
               <div className="mx-auto max-w-5xl px-5 py-6 sm:px-8 sm:py-8">
                 <h2 className="mb-4 text-2xl font-bold text-white sm:text-4xl">My Experience</h2>
                 <div className="mt-6 h-px w-32 mb-4 bg-white/30 rounded-full"></div>
-                <ul className="max-w-5xl text-brand-100/80 leading-relaxed">
-                  <li>&bull; I was an intern in BlendIToro as a Front-End web developer where I was tasked in handling the layout of the webpage and connecting back-end features to the front-end.</li>
-                  <li>&bull; The things I learned:</li>
-                  &ndash; React, PHP, Laravel, Postman, REST, SaaS, UI/UX, Flutter, Vercel Deployment
-                  <li>&bull; I was assigned in a team of 5 interns with me being the only Front-End. Another developer handling the mobile platform through Flutter, two developer being Back-end using Laravel and the last one being the PM who handles the project and the client.</li>
-                </ul>
-
-                <LazyMount className="mt-5 min-h-[11.625rem] border-y border-white/10 py-5 sm:min-h-[13.5rem] md:min-h-[14.5rem]">
-                  <ImageMarquee
-                    items={experienceImages[0].images.map((src, index) => ({
-                      src,
-                      alt: `${experienceImages[0].title} images ${index + 1}`
-                    }))}
-                    speedSeconds={110}
-                  />
-                </LazyMount>
+                <details className="group rounded-xl border border-white/10 bg-brand-900/40">
+                  <summary className="flex cursor-pointer list-none items-center justify-between gap-4 p-4 text-left [&::-webkit-details-marker]:hidden">
+                    <div>
+                      <h3 className="text-lg font-semibold text-white">BlendIToro — Front-End Web Development Intern</h3>
+                      <p className="mt-1 text-sm text-brand-100/75">Layout implementation, backend integration, and collaboration in a five-person internship team.</p>
+                    </div>
+                    <span aria-hidden="true" className="text-2xl text-emerald-200 transition-transform group-open:rotate-45">+</span>
+                  </summary>
+                  <div className="border-t border-white/10 p-4">
+                    <ul className="space-y-2 text-base leading-relaxed text-brand-100/85">
+                      <li>Built and refined the website&apos;s front-end layouts.</li>
+                      <li>Connected backend features to the React interface.</li>
+                      <li>Collaborated with Flutter, Laravel, and project-management teammates.</li>
+                    </ul>
+                    <p className="mt-4 text-sm font-medium text-emerald-100">Technologies: React, PHP, Laravel, Postman, REST APIs, SaaS, UI/UX, Flutter, and Vercel.</p>
+                    <ImageMarquee
+                      items={experienceImages[0].images.map((src, index) => ({ src, alt: `${experienceImages[0].title} image ${index + 1}` }))}
+                      animated={false}
+                      className="mt-5"
+                    />
+                  </div>
+                </details>
               </div>
             </div>
           </div>
@@ -325,54 +305,47 @@ function App() {
               <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_25%_35%,rgba(255,255,255,0.06),transparent_70%)]" />
               <div className="mx-auto max-w-6xl px-5 py-7 sm:px-8 sm:py-9 md:px-10 md:py-10">
                 <div className="max-w-3xl">
-                  <h2 className="mb-3 text-2xl font-bold text-white sm:text-4xl">Projects I have done</h2>
+                  <h2 className="mb-3 text-2xl font-bold text-white sm:text-4xl">Selected Projects</h2>
                   <div className="mt-6 h-px w-32 mb-4 bg-white/30 rounded-full"></div>
                   <p className="text-brand-100/80 leading-relaxed">
-                    A selection of my personal and collaborative projects, showcasing my skills in front-end and back-end development, 
-                    as well as my ability to work with various technologies and frameworks. 
-                    Each project highlights my problem-solving abilities, attention to detail, 
-                    and commitment to delivering high-quality software solutions.
+                    Expand a project to review its technical scope, stack, screenshots, and source code.
                   </p>
                 </div>
 
                 <div className="mt-6 space-y-4">
                   {projects.map(project => (
-                    <div key={project.title} className="rounded-xl border border-white/10 bg-brand-800/60 p-4 sm:p-5">
-                      <div className="grid gap-6 lg:grid-cols-[1fr,1.3fr] lg:items-center">
+                    <details key={project.title} className="group rounded-xl border border-white/10 bg-brand-800/60">
+                      <summary className="flex cursor-pointer list-none items-center justify-between gap-4 p-4 text-left sm:p-5 [&::-webkit-details-marker]:hidden">
                         <div>
                           <h3 className="text-xl font-semibold text-white">{project.title}</h3>
-                          <p className="mt-3 text-base text-brand-100/80 leading-relaxed">{project.description}</p>
-                          <div className="mt-4 flex flex-wrap gap-2 text-xs text-brand-100/80">
-                            {project.highlights.map(tag => (
-                              <span key={tag} className="rounded-full border border-white/10 bg-brand-900/60 px-3 py-1">
-                                {tag}
-                              </span>
-                            ))}
-                          </div>
-                          {project.repoUrl ? (
-                            <a
-                              href={project.repoUrl}
-                              target="_blank"
-                              rel="noreferrer"
-                              className="mt-5 inline-flex text-sm font-semibold text-emerald-200 hover:text-white focus-ring"
-                            >
-                              GitHub Repo →
-                            </a>
-                          ) : (
-                            <div className="mt-5 text-sm text-brand-100/60">Add repo link</div>
-                          )}
+                          <p className="mt-1 text-sm text-brand-100/75">{project.description}</p>
                         </div>
-                        <LazyMount className="min-h-[11.625rem] min-w-0 border-y border-white/10 py-5 sm:min-h-[13.5rem] md:min-h-[14.5rem]">
+                        <span aria-hidden="true" className="shrink-0 text-2xl text-emerald-200 transition-transform group-open:rotate-45">+</span>
+                      </summary>
+                      <div className="border-t border-white/10 p-4 sm:p-5">
+                        <div className="grid gap-6 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:items-start">
+                          <div>
+                            <h4 className="text-sm font-semibold uppercase tracking-wide text-emerald-200">Technical scope</h4>
+                            <ul className="mt-3 space-y-2 text-base leading-relaxed text-brand-100/85">
+                              {project.details.map(detail => <li key={detail}>{detail}</li>)}
+                            </ul>
+                            <h4 className="mt-5 text-sm font-semibold uppercase tracking-wide text-emerald-200">Stack</h4>
+                            <div className="mt-3 flex flex-wrap gap-2 text-sm text-brand-100/80">
+                              {project.highlights.map(tag => (
+                                <span key={tag} className="rounded-full border border-white/10 bg-brand-900/60 px-3 py-1">{tag}</span>
+                              ))}
+                            </div>
+                            <a href={project.repoUrl} target="_blank" rel="noreferrer" className="mt-5 inline-flex text-sm font-semibold text-emerald-200 hover:text-white focus-ring">
+                              View source on GitHub →
+                            </a>
+                          </div>
                           <ImageMarquee
-                            items={project.screenshots.map((src, index) => ({
-                              src,
-                              alt: `${project.title} screenshot ${index + 1}`
-                            }))}
-                            speedSeconds={50}
+                            items={project.screenshots.map((src, index) => ({ src, alt: `${project.title} screenshot ${index + 1}` }))}
+                            animated={false}
                           />
-                        </LazyMount>
+                        </div>
                       </div>
-                    </div>
+                    </details>
                   ))}
                 </div>
               </div>
