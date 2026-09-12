@@ -83,7 +83,7 @@ const projects = [
     title: "Rhaven's Garage",
     description: 'A full-stack e-commerce and operations platform for a motorcycle repair shop.',
     details: [
-      `Rhaven's Garage is a full-stack e-commerce and appointment-booking platform built with Laravel 13, PHP, React 19, TypeScript, Inertia.js, Vite, and Tailwind CSS. 
+      `Rhaven's Garage is a full-stack e-commerce and appointment-booking platform built with Laravel, PHP, React, TypeScript, Inertia.js, Vite, and Tailwind CSS. 
       It provides a public storefront, product and service catalogs, shopping cart, checkout, customer accounts, appointment scheduling, inventory management, order fulfillment, and administrative dashboards. 
       The platform uses PayMongo for secure hosted payments and refunds, n8n for automated order and inquiry workflows, Resend for transactional email, Cloudflare Turnstile for bot protection, and Sentry for error monitoring. 
       Authentication is handled through Laravel Fortify with email verification, password reset, two-factor authentication, while Spatie Permission provides role-based authorization for customers, administrators, and owners. 
@@ -91,7 +91,7 @@ const projects = [
     ],
     date: 'July 28, 2026 - September 5, 2026',
     repoUrl: 'https://github.com/RonRonnix/Rhaven-s-Garage',
-    highlights: ['Laravel', 'React', 'PHP', 'PostgreSQL', 'REST', 'TailwindCSS', 'TypeScript'],
+    highlights: ['Laravel', 'React', 'PHP', 'PostgreSQL', 'REST', 'TailwindCSS', 'TypeScript', 'Inertia.js', 'Vite', 'n8n', 'Sentry', 'Resend', 'Cloudflare Turnstile'],
     screenshots: [Rhaven1, Rhaven2, Rhaven3]
   },
   {
@@ -106,7 +106,7 @@ const projects = [
     ],
     date: 'December 20, 2025 - May 26, 2026',
     repoUrl: 'https://github.com/RonRonnix/E-commerce.git',
-    highlights: ['React', 'TypeScript', 'Vite'],
+    highlights: ['React', 'TypeScript', 'Vite', 'TailwindCSS', 'Node.js', 'Express', 'Prisma', 'PostgreSQL', 'REST'],
     screenshots: [cyberShot1, cyberShot2, cyberShot3]
   },
   {
@@ -136,7 +136,7 @@ const projects = [
     ],
     date: 'October 13, 2025 - November 3, 2025',
     repoUrl: 'https://github.com/RonRonnix/noteapp.git',
-    highlights: ['React', 'TypeScript', 'REST'],
+    highlights: ['React', 'TypeScript', 'REST', 'Vite', 'TailwindCSS', 'Node.js', 'Express', 'PostgreSQL', 'JWT', 'Zod'],
     screenshots: [Notes1, Notes2, Notes3]
   }
 ]
@@ -285,7 +285,7 @@ function App() {
                     <span aria-hidden="true" className="text-2xl text-emerald-200 transition-transform group-open:rotate-45">+</span>
                   </summary>
                   <div className="border-t border-white/10 p-4">
-                    <div className="space-y-2 text-base leading-relaxed text-brand-100/85">
+                    <div className="space-y-2 text-base text-justify leading-relaxed text-brand-100/85">
                       <p> During my internship at BlendToro, I contributed to the development of a client-focused web application by building the webpage with responsive and reusable interfaces with React and TypeScript and integrating REST APIs with backend services. 
                         I collaborated with a five-person development team to translate client requirements into functional features, while contributing to UI/UX decisions, debugging, and application improvements. 
                         I also gained experience with real-world deployment workflows through Vercel and worked closely with teammates to test, refine, and deliver application features.</p>
