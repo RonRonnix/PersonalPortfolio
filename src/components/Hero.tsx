@@ -1,5 +1,5 @@
-import profileImg from '../assets/images/Profileimage.webp' 
-import resumePdf from '../assets/images/Gelicame_Resume.pdf' 
+import profileImg from '../assets/images/Ronald2.webp' 
+import resumePdf from '../assets/images/Gelicame_Resumev2.pdf' 
 import Marquee from './Marquee'
 
 export default function Hero() {
@@ -32,14 +32,12 @@ export default function Hero() {
 
             {/* Image circle */}
             <div className="flex-1 flex justify-center animate-fade-up">
-              <div className="group relative h-40 w-40 sm:h-48 sm:w-48 md:h-56 md:w-56">
-                <div className="absolute inset-0 rounded-full border border-white/20" />
-                <div className="absolute inset-4 rounded-full border border-white/15" />
-                <div className="absolute inset-4 rounded-full overflow-hidden shadow-xl ring-1 ring-black/30 bg-brand-700/20 backdrop-blur-sm">
+              <div className="group relative h-40 w-40 rounded-full border border-white/20 bg-brand-700/20 p-2 shadow-xl ring-1 ring-black/30 backdrop-blur-sm sm:h-48 sm:w-48 md:h-56 md:w-56">
+                <div className="relative h-full w-full overflow-hidden rounded-full bg-brand-900/40">
                   <img
                     src={profileImg}
                     alt="Ronald profile portrait"
-                    className="w-full h-full object-cover select-none pointer-events-none transition-transform duration-500 ease-out group-hover:scale-110"
+                    className="h-full w-full object-cover object-[50%_15%] select-none pointer-events-none transition-transform duration-500 ease-out group-hover:scale-105"
                     draggable={false}
                   />
                   <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(0,0,0,0.2),transparent_65%)]" />

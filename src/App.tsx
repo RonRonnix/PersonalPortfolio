@@ -268,10 +268,23 @@ function App() {
 
                 <div className="mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
                   {skillGroups.map(group => (
-                    <section key={group.title} className="rounded-xl border border-white/10 bg-brand-900/40 p-4">
-                      <h3 className="text-base font-semibold text-white">{group.title}</h3>
-                      <ul className="mt-3 space-y-2 text-sm text-brand-100/80">
-                        {group.skills.map(skill => <li key={skill}>{skill}</li>)}
+                    <section
+                      key={group.title}
+                      className="rounded-xl border border-white/10 bg-brand-900/40 p-4"
+                    >
+                      <h3 className="text-base font-semibold text-white">
+                        {group.title}
+                      </h3>
+                            <ul
+                              className={`mt-3 text-sm text-brand-100/80 ${
+                                group.skills.length > 4
+                                  ? "grid grid-cols-2 gap-x-4 gap-y-2"
+                                  : "space-y-2"
+                              }`}
+                            >
+                        {group.skills.map(skill => (
+                          <li key={skill}>{skill}</li>
+                        ))}
                       </ul>
                     </section>
                   ))}
