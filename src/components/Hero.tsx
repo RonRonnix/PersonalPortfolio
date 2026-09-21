@@ -59,9 +59,9 @@ export default function Hero() {
             'Git / GitHub',
             'Figma',
             'Node.js',
-            'Next.js',
             'Express.js',
             'MySQL',
+            'PostgreSQL',
           ]}
           className="py-4 border-y border-white/10"
           speedSeconds={65}

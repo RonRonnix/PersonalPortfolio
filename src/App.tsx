@@ -95,6 +95,21 @@ const projects = [
     screenshots: [Rhaven1, Rhaven2, Rhaven3]
   },
   {
+    title: "Collaborative Whiteboard",
+    description: 'A collaborative drawing application for shared boards and real-time interaction.',
+    details: [
+      `Whiteboard is a full-stack realtime collaboration application built with React, TypeScript, Vite, Tailwind CSS, Express, Prisma, PostgreSQL, and Socket.IO. 
+      The platform allows authenticated users to register, verify their email, create collaborative rooms, invite others using room codes, and work together through a shared drawing canvas and realtime chat. 
+      Drawing is implemented with the browser’s HTML Canvas API, while Socket.IO synchronizes strokes, cursor movements, participant presence, chat messages, and board updates between connected users. 
+      The backend uses JWT authentication, bcrypt password hashing, Zod validation, protected API routes, CORS configuration, and database relationships managed through Prisma. 
+      User accounts, rooms, invite codes, and verification records are stored in PostgreSQL, while active collaboration state is maintained in memory for fast realtime interaction.`
+    ],
+    date: 'November 23, 2025 - January 19, 2026',
+    repoUrl: 'https://github.com/RonRonnix/Whiteboard.git',
+    highlights: ['React + Typescript', 'Vite', 'TailwindCSS', 'Prisma', 'Express', 'Prisma', 'Sockets', 'Canvas'],
+    screenshots: [Whiteboard1, Whiteboard2, Whiteboard3]
+  },
+    {
     title: "Cyber",
     description: 'A responsive e-commerce storefront focused on the customer purchase flow.',
     details: [
@@ -110,25 +125,10 @@ const projects = [
     screenshots: [cyberShot1, cyberShot2, cyberShot3]
   },
   {
-    title: "Collaborative Whiteboard",
-    description: 'A collaborative drawing application for shared boards and real-time interaction.',
-    details: [
-      `Whiteboard is a full-stack realtime collaboration application built with React, TypeScript, Vite, Tailwind CSS, Express, Prisma, PostgreSQL, and Socket.IO. 
-      The platform allows authenticated users to register, verify their email, create collaborative rooms, invite others using room codes, and work together through a shared drawing canvas and realtime chat. 
-      Drawing is implemented with the browser’s HTML Canvas API, while Socket.IO synchronizes strokes, cursor movements, participant presence, chat messages, and board updates between connected users. 
-      The backend uses JWT authentication, bcrypt password hashing, Zod validation, protected API routes, CORS configuration, and database relationships managed through Prisma. 
-      User accounts, rooms, invite codes, and verification records are stored in PostgreSQL, while active collaboration state is maintained in memory for fast realtime interaction.`
-    ],
-    date: 'November 23, 2025 - January 19, 2026',
-    repoUrl: 'https://github.com/RonRonnix/Whiteboard.git',
-    highlights: ['React + Typescript', 'Vite', 'TailwindCSS', 'Prisma', 'Express', 'Prisma', 'Sockets', 'Canvas'],
-    screenshots: [Whiteboard1, Whiteboard2, Whiteboard3]
-  },
-  {
     title: "Notes App",
     description: 'A personal note-taking application for creating, organizing, and finding notes quickly.',
     details: [
-      `NoteApp is a full-stack note-taking application built with React, TypeScript, Vite, React Router, and Tailwind CSS on the frontend, with a Node.js, Express, and TypeScript backend. 
+      `NoteApp is a full-stack note-taking application built with React, TypeScript, Vite, React Router, and Tailwind CSS on the frontend, with Node.js, Express, and TypeScript as the backend. 
       The application uses PostgreSQL for persistent storage and provides authenticated user registration and login through bcrypt password hashing and JSON Web Tokens. 
       Authenticated users can create, view, edit, and delete their own notes through a REST API, while server-side authorization ensures that users cannot access or modify notes belonging to other accounts. 
       The project also includes request validation with Zod, parameterized SQL queries, Helmet security headers, CORS configuration, responsive layouts, modal-based note editing, confirmation dialogs, loading states, and error handling. 
@@ -321,7 +321,7 @@ function App() {
                           I collaborated with a five-person development team to translate client requirements into functional features, while contributing to UI/UX decisions, debugging, and application improvements. 
                           I also gained experience with real-world deployment workflows through Vercel and worked closely with teammates to test, refine, and deliver application features.</p>
                       </div>
-                      <p className="mt-4 text-sm font-medium text-emerald-100">Technologies: React, PHP, Laravel, Postman, REST APIs, SaaS, UI/UX, Flutter, and Vercel.</p>
+                      <p className="mt-4 text-sm font-medium text-emerald-100">Technologies used: React, PHP, Laravel, Postman, REST APIs, SaaS, UI/UX, Flutter, and Vercel.</p>
                       <ImageMarquee
                         items={experienceImages[0].images.map((src, index) => ({ src, alt: `${experienceImages[0].title} image ${index + 1}` }))}
                         className="mt-5 border-y border-white/10 py-5"
